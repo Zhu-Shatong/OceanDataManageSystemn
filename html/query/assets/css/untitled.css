@@ -1,0 +1,78 @@
+.how_h2 {
+  color: rgba(0,0,255,0.6);
+}
+
+.intro {
+  color: rgba(0,0,240,0.4);
+}
+
+.btn.btn-outline-light.btn-lg {
+  background-color: rgba(0,0,255,0.2);
+}
+
+.span_now {
+  color: black;
+  font-size: 20px;
+}
+
+.col-md-5.feature-box {
+  border: solid 3px rgba(0,0,0,0.6);
+}
+
+.col-md-5.feature-box:hover {
+  box-shadow: 0 0 8px 8px lightblue;
+}
+
+.btn.btn-outline-primary.btn-lg {
+  left: 25%;
+  position: relative;
+}
+
+.water {
+  width: 100px;
+  height: 50px;
+  position: relative;
+  bottom: 70%;
+  right: 20%;
+}
+
+.img-fluid.UpnDown.img_updown {
+  position: relative;
+  left: 30%;
+  box-shadow: 0 0 8px 8px lightblue;
+  border: dashed 3px limegreen;
+  border-radius: 120px;
+}
+
+.for_touch:hover {
+  box-shadow: 0 0 8px 8px lightblue;
+}
+
+.card-img-top {
+  width: 300px;
+  height: 300px;
+}
+
+.btn.btn-outline-primary.btn-lg {
+  position: relative;
+  left: 0%;
+}
+
+#contact-hidden_personal_set {
+  z-index: 2;
+  background-color: rgba(0,0,0,0.7);
+  display: block;
+}
+
+.container.php_info {
+  color: white;
+}
+
+.php_h2 {
+  color: rgba(255,255,255,0.6);
+}
+
+.php_ppp {
+  color: rgba(255,255,255,0.7);
+}
+

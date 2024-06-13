@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>prescribe</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/Add-Another-Button.css">
+    <link rel="stylesheet" href="assets/css/Data-Table-1.css">
+    <link rel="stylesheet" href="assets/css/Data-Table.css">
+    <link rel="stylesheet" href="assets/css/food-table-meny.css">
+    <link rel="stylesheet" href="assets/css/Google-Style-Text-Input.css">
+    <link rel="stylesheet" href="assets/css/Growing-Search-Bar-Animated-Text-Input.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<style>
+    .hover-shape:hover{
+        cursor: pointer;
+        box-shadow: 0 0 8px 8px lightblue;
+    }
+
+    .tmp{
+        width: 150px;
+    }
+</style>
+
+<body>
+    <section style="background: linear-gradient(rgba(255,255,255,0.47), rgba(255,255,255,0.78) 50%), url(&quot;http://5b0988e595225.cdn.sohucs.com/images/20181229/9101756ffd86467293de6d27f482dab2.png&quot;) center / cover no-repeat;">
+        <div class="text-center" style="padding-top: 30px;padding-bottom: 20px;">
+            <h1 class="text-monospace" style="font-style: normal;font-weight: bold;color: lightblue;font-size: 70px;text-align: center;filter: grayscale(40%);text-shadow: 1px 0px 2px rgba(52,58,64,0.99);">处方药物开具</h1>
+            <hr style="width: 100px;border: 3px solid var(--light) ;">
+        </div>
+        <div class="border rounded-0 border">
+            <div class="container-fluid text-monospace">
+                <div class="row row-size">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead style="background: #d35256;color: var(--light);border-top-color: rgba(128,128,128,0);">
+                                    <tr style="border-top-color: rgba(128,128,128,0);">
+                                        <th class="rem" style="font-size: 20px;text-align: center;color: var(--light);">患者名字： xx 挂号号码：xx 日期：xx</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="menu-item" style="background: rgba(255,255,255,0);">请在下方输入对应药物名字进行搜索，点击Prescribe按钮确定</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="menu-item" style="background: rgba(255,255,255,0);border-top-width: 0px;">
+                                            <div class="d-flex justify-content-center h-100">
+                                                <div class="searchbar"><input type="text" class="search_input" placeholder="Search..."><a class="search_icon"><i class="fas fa-search"></i></a></div><div class="group">      
+    <input type="text" required class="medicine_name">
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>请输入药物名字</label>
+</div>
+
+
+<div class="group">      
+    <input type="text" required class="medicine_num">
+    <span class="highlight"></span>
+    <span class="bar"></span>
+    <label>请输入药物数量</label>
+</div>
+
+
+
+                                            </div><button class="btn btn-outline-primary text-truncate float-none float-sm-none add-another-btn" data-bss-hover-animate="pulse" type="button">Prescribe<i class="fas fa-plus-circle edit-icon"></i></button>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td class="menu-item" style="background: rgba(255,255,255,0);">以下为获取的药物结果<div></div>
+                                            <div class="col phram-info"><table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <thead>
+            <tr>
+                <th>药物名字</th>
+                <th>每次服用剂量</th>
+                <th>服用频率</th>
+                <th>药物单价</th>
+                <th>药物描述</th>
+            </tr>
+        </thead>
+        <tbody class="medicine_table">
+            <tr class="hover-shape" name="药物名字">
+                <td class="tmp">药物名字</td>
+                <td class="tmp">每次服用剂量</td>
+                <td class="tmp">服用频率</td>
+                <td class="tmp">药物单价</td>
+                <td class="tmp">药物描述</td>
+            </tr>
+        </tbody>
+    </table>
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <thead style="background: #d35256;color: var(--light);border-top-color: rgba(128,128,128,0);">
+                                                            <tr style="border-top-color: rgba(128,128,128,0);"></tr>
+                                                        </thead>
+                                                        <tbody class="medicine-info">
+                                                            <tr></tr>
+                                                            <tr>
+                                                                <td class="menu-item" style="background: rgba(255,255,255,0);border-top-width: 0px;"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="assets/js/cryptico.js"></script>
+    <script src="assets/js/no_encrypty.js"></script>
+</body>
+
+<script>
+    //获取今天的日期 返回字符串
+    function get_cua_date()
+    {
+        var myDate = new Date()
+        var year = myDate.getFullYear()
+        var month = myDate.getMonth()+1
+        var day = myDate.getDate()
+        return year+"-"+month+"-"+day
+    }
+
+    // 获取当前患者挂号号码
+    function get_doctor_cur_register()
+    {
+        var cur_register
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: false,
+            data:{
+                action: "search_Current_Register",
+                a_date: get_cua_date(),
+                a_no_staff: doc_no,
+                no_op: doc_no
+            },
+            datatype:'json',
+            success:function(res){
+                if(res['retlist'].length == 0)
+                    cur_register = 0;
+                else
+                    cur_register = res['retlist'][res['retlist'].length-1]["a_index"]
+            },
+            error: function(){
+                alert("服务器暂无连接")
+            }
+        })
+        return cur_register
+    }
+
+    var pat_no
+    // 获取患者名字信息
+    function get_pat_name(reg_no)
+    {
+        var pat_name
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: false,
+            data:{
+                action: "search_Register",
+                a_date: get_cua_date(),
+                a_no_staff: doc_no,
+                a_index: reg_no,
+                no_op: doc_no
+            },
+            datatype:'json',
+            success:function(res){
+                if(res['ret'] == 1){
+                    pat_no = res['retlist'][0]['a_no_visitor_id']
+                }
+                else{
+                    alert("服务器暂无连接")
+                    return
+                }
+            },
+            error: function(){
+                alert("服务器暂无连接")
+                return
+            }
+        })
+
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: false,
+            data:{
+                action: "search_Patient",
+                no: pat_no,
+                no_op: doc_no
+            },
+            datatype:'json',
+            success:function(res){
+                if(res['ret'] == 1){
+                    pat_name = res['retlist'][0]['name']
+                }
+                else{
+                    alert("服务器暂无连接")
+                }
+            },
+            error: function(){
+                alert("服务器暂无连接")
+            }
+        })
+
+        return pat_name
+    }
+
+    // 格式化时间字符串
+    function format(time_str)
+    {
+        time_str = time_str.replace('T', ' ')
+        time_str = time_str.replace('Z', ' ')
+        return time_str
+    }
+
+    // 获取当前医生账户信息 
+    var doc_no = parseInt(url_parser(window.location.search))
+    var cua_date = format(get_cua_date())
+    var cur_reg_no = get_doctor_cur_register()
+    var pat_name = get_pat_name(cur_reg_no)
+    // 初始化提示信息
+    function Init()
+    {
+        $(".rem").text("患者名字：" + pat_name + " 挂号号码：" + cur_reg_no + " 日期：" + cua_date)
+        $(".phram-info").css("overflow", "auto")
+    }
+
+    Init()
+
+    // 获取药物数据
+    function Search_Medicine(filter_str)
+    {
+        var medicine_list
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: false,
+            data:{
+                action: "search_Medicine",
+                no_op: doc_no
+            },
+            datatype:'json',
+            success:function(res){
+                if(res['ret'] == 1){
+                    medicine_list = res['retlist']
+                }
+                else{
+                    alert("服务器暂无连接")
+                }
+            },
+            error: function(){
+                alert("服务器暂无连接")
+            }
+        })
+        
+        var res_list=[]
+
+        if(filter_str == "")
+            return medicine_list
+        else{
+            for(var i in medicine_list){
+                if(medicine_list[i]['d_name'].indexOf(filter_str) != -1){
+                    res_list.push(medicine_list[i])
+                }
+            }
+            return res_list
+        }
+    }
+
+    // 将药物列表转换为表格
+    function medicine_list_generate(medicine_list)
+    {
+        var update_html = ""
+        $(".medicine_table").html(update_html)   // 首先清空html
+
+        for(var i in medicine_list){
+            var name = medicine_list[i]['d_name']
+            var one_use = medicine_list[i]['m_one_use']
+            var freq = medicine_list[i]['m_freq']
+            var price = medicine_list[i]['m_price']
+            var depict = medicine_list[i]['d_presc']
+            update_html += '<tr class="hover-shape" name=' + name + '>\
+                <td class="tmp">' + name + '</td>\
+                <td class="tmp">' + one_use + '</td>\
+                <td class="tmp">' + freq + '</td>\
+                <td class="tmp">' + price + '</td>\
+                <td class="tmp">' + depict + '</td>\
+            </tr>'
+        }
+        $(".medicine_table").html(update_html)
+    }
+
+    // 初始生成所有药品列表
+    med = Search_Medicine("")
+    medicine_list_generate(med)
+
+    // 点击药物 在药物名字中直接输入   // 使用dom操作防止jquery对动态生成元素失效
+    $(document).on("click", ".hover-shape", function(){
+        var name = $(this).attr('name')
+        $(".medicine_name").val(name)
+    })
+
+    // 点击 对药物进行搜索.search_icon 
+    $(".search_icon").click(function(){
+        var filter_str = $(".search_input").val()
+        var medicine_list = Search_Medicine(filter_str)
+        medicine_list_generate(medicine_list)
+    })
+
+    $(".search_icon").hover(function(){
+        $(this).css("cursor", "pointer")
+    })
+
+    // 点击prescribe  .btn.btn-outline-primary.float-none.float-sm-none.add-another-btn
+    $(".btn.btn-outline-primary.float-none.float-sm-none.add-another-btn").click(function(){
+        var name = $(".medicine_name").val()
+        var num = $(".medicine_num").val()
+        if(name == "" || num == "" || parseInt(num) <= 0){
+            alert("信息输入有误，请重试")
+            return
+        }
+        console.log(name, num, pat_no, cur_reg_no)
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: true,
+            data:{
+                action: "add_Prescription",
+                d_name: name,
+                Au_no: pat_no,
+                Au_num: num,
+                Au_index: cur_reg_no,
+                Au_date: get_cua_date(),
+                no_op: doc_no
+            },
+            datatype:'json',
+            success:function(res){
+                if(res['ret'] == 1){
+                    alert('添加药物信息成功')
+                }
+                else{
+                    alert("服务器暂无连接")
+                }
+            },
+            error: function(){
+                alert("服务器暂无连接")
+            }
+        })
+    })
+</script>
+
+
+</html>

@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+</head>
+<style>
+    body {
+        background: url("./assets/background.jpg");
+        background-size: cover;
+    }
+
+    .login{
+        border: solid 2px lightskyblue;
+        margin: auto;
+        width: 300px;
+        height: 400px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(255,255,210,0.5);
+        display: none;
+    }
+    
+    .account{
+        position: absolute;
+        top: 30%;
+        left: 10%;
+    }
+
+    .passwd{
+        position: absolute;
+        bottom: 50%;
+        left: 10%;
+    }
+
+    datalist + label{
+        position: absolute;
+        bottom: 30%;
+        left: 5%;
+    }
+
+    .varify{
+        border: 2px solid lightsalmon;
+        display: inline-block;
+        padding: 0 10px;
+        background: lightgreen
+    }
+    
+    .btn_login{
+        border: lightseagreen 2px solid;
+        padding: 5px 15px;
+        background: grey;
+        position: absolute;
+        bottom: 10%;
+        left: 20%;
+        font-size: large;
+        color: whitesmoke;
+    }
+
+    .btn_reset{
+        border: lightseagreen 2px solid;
+        padding: 5px 15px;
+        background: grey;
+        position: absolute;
+        bottom: 10%;
+        left: 60%;
+        font-size: large;
+        color: whitesmoke;
+    }
+
+    .btn_reg {
+        position: relative;
+        top: 10%;
+        left: 35%;
+        border: 3px solid lightblue;
+        color: whitesmoke;
+        background: grey;
+        padding: 5px 15px;
+    }
+
+    .title {
+        position: relative;
+        top: 50%;
+        transform: translateY(45%);
+        color: white;
+        font-size: 3em;
+        text-align: center;
+        width: 100%;
+    }
+
+</style>
+<body>
+    <div class="title">
+        <h1 class="title">海平面高度查询平台</h1>
+        <!-- 其他登录表单元素 -->
+    </div>
+    <div class = "login">
+        <input type="button" value="注册新账号" class="btn_reg">
+        <label class="account"><span>账&nbsp号</span> ：<input type="text" class="val_account" placeholder="请输入登录账号" required autocomplete="off" list="account" value=""></label>
+        <label class="passwd"><span>密&nbsp码</span> ：<input type="password" class="val_passwd" placeholder="请输入登录密码" required autocomplete="off" value=""></label>
+        <datalist id="account">
+            <option value="1***">doctor</option>
+            <option value="2***">query</option>
+            <option value="3***">patient</option>
+        </datalist>
+        <label>
+            <div class="varify"></div>
+            <input id="varify" type="text" maxlength="4" placeholder="请输入四位验证码" value=""> 
+        </label>
+        <input type="button" value="Login" class="btn_login">
+        <input type="reset" value="Reset" class="btn_reset">
+    </div>
+</body>
+<script src="jquery.js"></script>
+<script>
+    $(window).one("click", function(){
+        $(".login").fadeToggle(1500)
+    })
+
+    $("label ~ input").mouseenter(function(){
+        $(this).css({
+            background:"rgba(128,128,128,0.5)"
+        })
+    }).mouseleave(function(){
+        $(this).css({
+            background:"rgba(128,128,128,1)"
+        })
+    })
+
+    $(".btn_reset").click(function(){
+        var arr = document.querySelectorAll("input[type=text]")
+        for(var i = 0;i < arr.length;i++){
+            arr[i].value = ""
+        }
+        document.querySelector("input[type=password]").value=""
+    })
+
+</script>
+<script src="cryptico.js"></script>
+<script src="no_encrypty.js"></script>
+<script>
+    //产生验证码的字符
+    var chars = "QWERTYUIOPASDFGHJKLZXCVBNMqazwsxedcrfvtgbyhnujmiklop1234567890"
+    var valid_str
+    var tmp = document.getElementsByClassName("varify")[0]
+
+    function getRandom(l,r){
+        //随机生成l，r的正整数
+        return parseInt(l+Math.random()*(r-l+1))
+    }
+
+    //设置文本不可复制
+    tmp.addEventListener("selectstart",function(e){
+        e.preventDefault();
+    })
+
+    // 获取今天的日期 返回字符串
+    function get_cua_date()
+    {
+        var myDate = new Date()
+        var year = myDate.getFullYear()
+        var month = myDate.getMonth()+1
+        var day = myDate.getDate()
+        return year+"-"+month+"-"+day
+    }
+
+    // 返回datetime类型字符串
+    function get_cur_time()
+    {
+        var date = get_cua_date()
+        var myDate = new Date()
+        var hour = myDate.getHours()
+        var minu = myDate.getMinutes()
+        var sec = myDate.getSeconds()
+        return date + " " + hour + ":" + minu + ":" + sec
+    }
+
+    function gen_varify(){
+        valid_str = ""
+
+        $(".varify").empty()
+
+        for(var i = 0;i < 4;i++){
+            var dom = $("<span></span>")
+            dom.html(chars[getRandom(0,chars.length-1)])
+            dom.css({
+                "font-size":getRandom(20,30)+"px",
+                color:"rgb("+getRandom(0,255)+","+getRandom(0,255)+","+getRandom(0,255)+")",
+                transform: "translate(" + getRandom(-5,5)+"px,"+ getRandom(-5,5)+"px) rotate(" + getRandom(-20,20) + "deg)"
+            })
+            valid_str += dom.html()
+            $(".varify").append(dom)
+        }
+    }
+
+    gen_varify();   //自启动
+
+    $(".varify").click(function(){
+        gen_varify()
+    })
+
+    $("#varify").blur(function(){
+        if($("#varify").val() != valid_str){
+            $("#varify").css({
+                outline:"5px solid red"
+            })
+        }
+        else{
+            $("#varify").css({
+                outline:"0px solid red"
+            })
+        }
+    })
+
+    //访问后端数据库进行登录
+    $(".btn_login").click(function(){
+        var no = $(".val_account").val()
+        var passwd = $(".val_passwd").val()
+
+        if(no  == "" || passwd == ""){
+            alert("有信息还未填充完整，无法登录，请稍后重试")
+            return
+        }
+        else if($("#varify").val() != valid_str){
+            alert("验证码无法匹配，请重试")
+            return
+        }
+
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: true,   //异步
+            data:{
+                action: "search_IdentityInfo",
+                no: no,  
+                no_op: no,
+            },
+            datatype:'json',
+        }).then(function(res){
+            if(res['ret'] == 0){
+                alert("输入的账号或密码错误，请重新登陆 ret=0")
+                gen_varify();  
+                $(".val_account").val("")
+                $(".val_passwd").val("")
+                return
+            }
+            res_list = res['retlist']
+            if(res_list.length > 0 && passwd == res_list[0]['password']){
+                $.ajax({
+                    type: 'post',
+                    url:"http://127.0.0.1:8000/user/api/",
+                    async: false,
+                    data:{
+                        action: "write_log",
+                        no: no,
+                        date: get_cur_time
+                    },
+                    datatype:'json',
+                    success: function(res){
+                        if(res['ret'] != 1){
+                            alert("暂无连接")
+                        }
+                    },
+                    error: function(res){
+                        alert("暂无连接")
+                    }
+                })
+                if(no.toString()[0] == "3")
+                    window.location.assign(url_generate("../patient/patient.html", [no]))
+                else if(no.toString()[0] == "2")
+                    window.location.assign(url_generate("../query/query.html", [no]))
+                else
+                    window.location.assign(url_generate("../doctor/doctor.html", [no]))
+            }
+            else{
+                alert("输入的账号或密码错误，请重新登陆")
+                gen_varify();   
+                $(".val_account").val("")
+                $(".val_passwd").val("")
+            }
+        })
+        
+    })
+
+    $(".btn_login").hover(function(){
+        $(this).css("cursor","pointer")
+    })
+
+    $(".btn_reset").hover(function(){
+        $(this).css("cursor","pointer")
+    })
+
+    $(".btn_reg").hover(function(){
+        $(this).css("cursor","pointer")
+    })
+
+    $(".btn_reg").mouseenter(function(){
+        $(this).css("background","rgba(128,128,128,0.5)")
+    }).mouseleave(function(){
+        $(this).css("background","grey")
+    })
+
+    $(".btn_reg").click(function(){
+        window.open("../register_new_account/register_new_account.html");
+    })
+</script>
+
+</html>

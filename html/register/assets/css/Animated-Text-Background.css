@@ -1,0 +1,110 @@
+#animatedTextBackground {
+  display: flex;
+  flex-flow: column;
+  justify-content: center;
+  width: 100%;
+  height: 100vh;
+  background: rgba(0,255,255,0.4);
+}
+
+#animatedTextHeading {
+  background: url("https://s3-us-west-2.amazonaws.com/s.cdpn.io/907368/background-text.jpg") repeat;
+  font-family: 'Arbutus Slab', serif;
+  -webkit-text-fill-color: transparent;
+  -webkit-background-clip: text;
+  text-align: center;
+  font-weight: 900;
+  letter-spacing: -1px;
+  font-size: 15vw;
+  line-height: .8em;
+  background-size: 300%;
+}
+
+.navbar.navbar-light.navbar-expand-md.navbar-fixed-top.navigation-clean-button {
+  background-color: rgba(0,0,0,0.5);
+}
+
+.nav-link.active:hover {
+  cursor: pointer;
+}
+
+.navbar.navbar-light.navbar-expand-md.navbar-fixed-top.navigation-clean-button {
+  position: relative;
+  top: -15%;
+  display: block;
+  width: 90%;
+}
+
+.nav-link.active:hover {
+  box-shadow: 0 0 8px 8px lightblue;
+}
+
+.dropdown-toggle.nav-link:hover {
+  box-shadow: 0 0 8px 8px lightblue;
+}
+
+.nav-link:hover {
+  box-shadow: 0 0 8px 8px lightblue;
+}
+
+.dropdown-item:hover {
+  cursor: pointer;
+}
+
+.btn.btn-light.action-button {
+  position: relative;
+  right: 40%;
+  top: -10%;
+}
+
+.features-blue {
+  position: absolute;
+  top: 19.5%;
+  display: block;
+  height: 80%;
+  width: 90%;
+}
+
+.img_doctor {
+  width: 150px;
+  height: 180px;
+  position: relative;
+  left: -10%;
+  float: left;
+}
+
+.description {
+  overflow: hidden;
+}
+
+.btn.btn-light.action-button {
+  position: relative;
+  left: 0%;
+  top: 5%;
+}
+
+.col-sm-6.col-md-4.item:hover {
+  box-shadow: 0 0 8px 8px lightblue;
+}
+
+.features-blue {
+  display: block;
+}
+
+.btn.btn-primary.btn-sm.float-right.tenant-continue-btn.continue1 {
+  position: absolute;
+  top: 15%;
+  right: 30%;
+}
+
+.btn.btn-primary.btn-sm.float-right.tenant-continue-btn.continue2 {
+  position: absolute;
+  right: 65%;
+  top: 15%;
+  padding: 8px;
+}
+
+.btn.btn-primary.btn-sm.float-right.tenant-continue-btn.continue1:hover {
+  cursor: pointer;
+}
+

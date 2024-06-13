@@ -1,0 +1,82 @@
+.menu-item {
+  color: rgb(0,0,0);
+  padding: 10px 30px;
+  margin: 6px 0;
+  background-color: #ffffff;
+}
+
+.menu-item .price {
+  font-weight: 700;
+  float: right;
+}
+
+.mitt {
+  font-size: 11px;
+}
+
+.table thead th {
+  border: none;
+}
+
+.rubrik-span {
+  font-size: 15px;
+}
+
+.border {
+  border: 0px solid #dee2e6!important;
+}
+
+.row.row-size {
+  width: 80%;
+  height: 60%;
+  position: relative;
+  left: 10%;
+}
+
+.far.fa-sad-cry {
+  margin: 40px;
+  margin-left: 350px;
+}
+
+.far.fa-meh-rolling-eyes {
+  margin: 40px;
+}
+
+.far.fa-surprise {
+  margin: 40px;
+}
+
+.fa.fa-smile-o {
+  margin: 40px;
+}
+
+.far.fa-laugh {
+  margin: 40px;
+}
+
+.far.fa-laugh-beam {
+  margin: 40px;
+}
+
+.far:hover {
+  box-shadow: 0 0 8px 8px pink;
+}
+
+.fa.fa-smile-o:hover {
+  box-shadow: 0 0 8px 8px pink;
+}
+
+#get-content {
+  background: rgb(173,216,230);
+  position: absolute;
+  top: 100%;
+}
+
+#get-content:hover {
+  background: rgba(173,216,230,0.5);
+}
+
+body {
+  background: linear-gradient(rgba(255,255,255,0.47), rgba(255,255,255,0.78) 50%), url("http://5b0988e595225.cdn.sohucs.com/images/20181229/9101756ffd86467293de6d27f482dab2.png") center / cover no-repeat;
+}
+

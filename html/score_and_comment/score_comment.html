@@ -1,0 +1,362 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>score_comment</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/food-table-meny.css">
+    <link rel="stylesheet" href="https://cdn.quilljs.com/1.0.0/quill.snow.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+
+<style>
+    body {
+        background: url("./assets/img/sea.jpg");
+        background-size: cover;
+    }
+
+    body::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.5);
+        z-index: -1;
+    }
+</style>
+
+<body>
+    <section>
+        <div class="text-center" style="padding-top: 30px;padding-bottom: 20px;">
+            <h1 class="text-monospace" style="font-style: normal;font-weight: bold;color: lightblue;font-size: 70px;text-align: center;filter: grayscale(40%);text-shadow: 1px 0px 2px rgba(52,58,64,0.99);">评分意见反馈</h1>
+            <hr style="width: 100px;border: 3px solid var(--light) ;">
+        </div>
+        <div class="border rounded-0 border">
+            <div class="container-fluid text-monospace">
+                <div class="row row-size">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead style="background: rgb(82, 125, 211);color: var(--light);border-top-color: rgba(128,128,128,0);">
+                                    <tr style="border-top-color: rgba(128,128,128,0);">
+                                        <th style="font-size: 20px;text-align: center;color: var(--light);" class="doc_name">工作人员名字</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="menu-item" style="background: rgba(255,255,255,0);border-top-width: 0px;">分数选择：其中下列表情从左到右依次代表0 2 4 6 8 10分</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="menu-item" style="background: rgba(255,255,255,0);"><i class="far fa-sad-cry score0 expre" no=""></i><i class="far fa-meh-rolling-eyes score1 expre" no=""></i><i class="far fa-surprise score2 expre" no=""></i><i class="fa fa-smile-o score3 expre" no=""></i><i class="far fa-laugh score4 expre" no=""></i><i class="far fa-laugh-beam score5 expre" no=""></i></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="menu-item" style="background: rgba(255,255,255,0);">请您在下方框内输入对该工作人员的评价留言</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container input_contain">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div></div>
+                        <div id="toolbar"></div>
+                        <div id="editor"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p id="content"> </p><button class="btn btn-light pull-right" id="get-content" type="button">Confirm(exit)</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+    <script src="assets/js/Quill-Text-Editor.js"></script>
+    <script src="assets/js/cryptico.js"></script>
+    <script src="assets/js/no_encrypty.js"></script>
+</body>
+
+<script>
+    // 获取当前医生账号信息 
+    var doc_no = parseInt(url_parser(window.location.search))
+
+    // 获取今天的日期 返回字符串
+    function get_cua_date()
+    {
+        var myDate = new Date()
+        var year = myDate.getFullYear()
+        var month = myDate.getMonth()+1
+        var day = myDate.getDate()
+        return year+"-"+month+"-"+day
+    }
+
+    // 返回datetime类型字符串
+    function get_cur_time()
+    {
+        var date = get_cua_date()
+        var myDate = new Date()
+        var hour = myDate.getHours()
+        var minu = myDate.getMinutes()
+        var sec = myDate.getSeconds()
+        return date + " " + hour + ":" + minu + ":" + sec
+    }
+
+    // 获取新增的评分编号
+    function get_cur_fno()
+    {
+        var res_no
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: false,
+            data:{
+                action: "search_Score",
+                no_op: '3'
+            },
+            datatype:'json',
+            success: function(res){
+                if(res['ret'] == 1){
+                    res_list = res['retlist']
+                    if(res_list.length == 0)
+                        res_no = 1
+                    else
+                        res_no = res_list.slice(-1)[0]['f_no'] + 1
+                }
+                else{
+                    alert("服务器暂无连接")
+                }
+            },
+            error: function(){
+                alert("服务器暂无连接")
+            }
+        })
+
+        return res_no
+    }
+
+    // 获取新增的意见编号
+    function get_cur_cc_no()
+    {
+        var res_no
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: false,
+            data:{
+                action: "search_Comment",
+                no_op: '3'
+            },
+            datatype:'json',
+            success: function(res){
+                if(res['ret'] == 1){
+                    res_list = res['retlist']
+                    if(res_list.length == 0)
+                        res_no = 1
+                    else
+                        res_no = res_list.slice(-1)[0]['cc_no'] + 1
+                }
+                else{
+                    alert("服务器暂无连接")
+                }
+            },
+            error: function(){
+                alert("服务器暂无连接")
+            }
+        })
+
+        return res_no
+    }
+
+    // 更新某个医生的综合评分
+    function update_doc_index()
+    {
+        var score_list = []     //当前医生的所有评分列表
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: false,
+            data:{
+                action: "search_Score",
+                no: doc_no,
+                no_op: '3'
+            },
+            datatype:'json',
+            success: function(res){
+                if(res['ret'] == 1){
+                    res_list = res['retlist']
+                    for(var i in res_list){
+                        score_list.push(res_list[i]['f_score'])
+                    }
+                }
+                else{
+                    alert("服务器暂无连接")
+                    return
+                }
+            },
+            error: function(){
+                alert("服务器暂无连接")
+                return
+            }
+        })
+
+        var update_index = 0  // 计算医生当前综合评分
+        for(var i in score_list){
+            update_index += score_list[i]
+        }
+        update_index = update_index == 0 ? 10 : update_index / score_list.length
+
+        // 更新医生的综合得分
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: true,
+            data:{
+                action: "update_Doctor",
+                no: doc_no,
+                s_index: update_index,
+                no_op: doc_no
+            },
+            datatype:'json',
+            success: function(res){
+                if(res['ret'] != 1)
+                    alert("服务器暂无连接")
+            },
+            error: function(){
+                alert("服务器暂无连接")
+            }
+        })
+    }
+
+    // 为该医生插入新评分  -- 同步方式 
+    function add_score(score)
+    {
+        var cur_no = get_cur_fno()
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: false,
+            data:{
+                action: "add_Score",
+                f_no: cur_no,
+                f_score: score,
+                f_time: get_cur_time(),
+                no: doc_no,
+                no_op: '3'
+            },
+            datatype:'json',
+            success: function(res){
+                if(res['ret'] != 1){
+                    alert("服务器暂无连接")
+                }
+            },
+            error: function(){
+                alert("服务器暂无连接")
+            }
+        })
+    }
+
+    // 为该医生插入新意见 -- 同步方式
+    function add_comment(comment)
+    {
+        var cur_no = get_cur_cc_no()
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: false,
+            data:{
+                action: "add_Comment",
+                cc_no: cur_no,
+                cc_content: comment,
+                cc_time: get_cur_time(),
+                no: doc_no,
+                no_op: '3'
+            },
+            datatype:'json',
+            success: function(res){
+                if(res['ret'] != 1){
+                    alert("服务器暂无连接")
+                }
+            },
+            error: function(){
+                alert("服务器暂无连接")
+            }
+        })
+    }
+
+
+    // 初始化某个医生的名字
+    $.ajax({
+        type: 'post',
+        url:"http://127.0.0.1:8000/user/api/",
+        async: true,
+        data:{
+            action: "search_Doctor",
+            no: doc_no,
+            no_op: '3'
+        },
+        datatype:'json',
+    }).then(function(res){
+        if(res['ret'] == 1){
+            res_list = res['retlist'][0]
+            $(".doc_name").text("您所评价的医生为：" + res_list['name'])
+        }
+        else{
+            alert("服务器暂无连接")
+        }
+    }).catch(function(){
+        alert("服务器暂无连接")
+    })
+
+    $(".expre").click(function(){
+        for(var i = 0; i < 6; i++){
+            $(".score" + i).attr("no", "")
+            $(".score" + i).css("border", "0px solid")
+        }
+        $(this).css("border", "2px solid red")
+        $(this).attr("no", "1")
+    })
+
+    $(".expre").hover(function(){
+        $(this).css("cursor", "pointer")
+    })
+
+    // 点击#get-content 后 通过#editor 获取信息 通过扫描$(".score" + i) 确定最终分数
+    $("#get-content").click(function(){
+        // 首先获取分数
+        var score = -1
+        var content = ''
+        for(var i = 0; i < 6; i++){
+            if($(".score" + i).attr("no") == "1")
+                score = i * 2
+        }
+        content = $("#editor").text()
+        if(score != -1){
+            add_score(score)
+            update_doc_index()
+        }
+        if(content != ""){
+            add_comment(content)
+        }
+        if(score == -1 && content == "")
+            window.history.back();
+        else{
+            alert("感谢您的反馈")
+            window.history.back();
+        }
+    })
+</script>
+
+</html>

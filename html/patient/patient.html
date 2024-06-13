@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat:400,400i,700,700i,600,600i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto+Slab:300,400|Roboto:300,400,700">
+    <link rel="stylesheet" href="assets/fonts/simple-line-icons.min.css">
+    <link rel="stylesheet" href="assets/css/Floating-Button.css">
+    <link rel="stylesheet" href="assets/css/Floating-Up--Down-Animation.css">
+    <link rel="stylesheet" href="assets/css/Highlight-Clean.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.css">
+    <link rel="stylesheet" href="assets/css/PHP-Contact-Form-dark-1.css">
+    <link rel="stylesheet" href="assets/css/PHP-Contact-Form-dark.css">
+    <link rel="stylesheet" href="assets/css/smoothproducts.css">
+    <link rel="stylesheet" href="assets/css/sticky-dark-top-nav-with-dropdown.css">
+    <link rel="stylesheet" href="assets/css/untitled-1.css">
+    <link rel="stylesheet" href="assets/css/untitled.css">
+    <link rel="stylesheet" href="assets/css/Wave-Animation-Circle-and-Square.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-light navbar-expand-lg fixed-top bg-white clean-navbar">
+        <div class="container"><a class="navbar-brand logo" href="#">Hello</a><button data-toggle="collapse" data-target="#navcol-1" class="navbar-toggler"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse" id="navcol-1">
+                <div class="collapse navbar-collapse" id="navcol-1">
+                    <ul class="navbar-nav nav-right">
+                        <li class="nav-item"></li>
+                        <li class="nav-item dropdown"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">个人设置</a>
+                            <div class="dropdown-menu"><a class="dropdown-item dropdown-item1">修改个人信息</a><a class="dropdown-item dropdown-item2">查看权限审核状态信息</a></div>
+                        </li>
+                        <li class="nav-item"></li>
+                        <li class="nav-item"></li>
+                        <li class="nav-item"></li>
+                    </ul>
+                    <p class="ml-auto navbar-text actions"> </p>
+                </div>
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item"></li>
+                    <li class="nav-item"><a class="nav-link active exit" id="btn_exit">退出登录</a></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"></li>
+                    <li class="nav-item"></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <main class="page landing-page">
+        <section class="clean-block clean-hero" style="background-image: url(&quot;./assets/img/sea.jpg&quot;);color: rgba(9, 162, 255, 0.15);height: 1000px;">
+            <div id="contact-hidden_personal_set">
+                <div class="container php_info">
+                    <div class="intro">
+                        <h2 class="php_h2">个人信息修改设置</h2>
+                        <p class="php_ppp">please update your self information here</p>
+                    </div>
+                    <form id="contact-form" action="assets/php/contact.php" method="post">
+                        <div class="messages"></div>
+                        <div class="controls">
+                            <div class="form-row">
+                                <div class="col-md-6">
+                                    <div class="form-group"><label for="ford_name">姓名/Name* </label><input class="form-control" type="text" id="ford_name" data-error="请输入正确的名字" name="name" required="" placeholder="请输入更新后的名字" autocomplete='off'>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group"><label for="form_lastname">性别/gender* </label><input class="form-control" type="text" id="form_lastname" data-error="请输入正确的性别信息" name="lastname" required="" placeholder="请输入male/female" pattern="(male|female)" autocomplete='off'>
+                                        <div class="help-block with-errors"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-6">
+                                <div class="form-group"><label for="form_email">年龄/age* </label><input class="form-control" type="number" id="form_email" data-error="请输入正确的年龄信息" name="email" required="" placeholder="请输入更新后的年龄" autocomplete='off' min="1"></div>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="col-md-12">
+                                <div class="form-group"><label for="form_message">数据用途备注* </label><input class="form-control" type="text" id="form_message" data-error="请输入正确的信息" rows="4" name="message" required="" placeholder="请输入更新后的用途说明，若无则填入无" autocomplete='off'>
+                                    <div class="help-block with-errors"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-12"><button class="btn btn-success btn-send btn_ok" value="Senden">OK</button><button class="btn btn-success btn-send" id="btn_close" value="Senden">CLOSE</button></div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="text">
+                <h2 class="how_h2"><span class="obtain_info"></span>您好！&nbsp;</h2>
+                <p class="intro">欢迎登录海洋海面高度数据开放平台&nbsp; &nbsp; &nbsp; 用户界面</p><button class="btn btn-outline-light btn-lg" type="button"><a href="#jump">Search More</a></button>
+            </div>
+        </section>
+        <section class="clean-block clean-info dark">
+            <div class="container">
+                <div class="block-heading" id="jump">
+                    <div class="w-100 p-5">
+                        <div class="wave-circle mx-auto my-5">
+                            <div class="wave-effect"><span></span></div>
+                        </div>
+                    </div>
+                    <h2 class="text-info" data-bss-hover-animate="shake">在线咨询</h2>
+                    <p>You can find an online counseling staff to get information, or have a series of written exchanges.&nbsp;</p><span class="span_now">&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;NOW</span>
+                </div>
+                <div class="row align-items-center">
+                    <div class="col-md-6"><img class="img-thumbnail" src="./assets/img/p2.png"></div>
+                    <div class="col-md-6">
+                        <h3>咨询服务介绍</h3>
+                        <div class="getting-started-info">
+                            <p>系统拥有多达上百名专业咨询人员在线等候<br>通过对您需求的了解，帮助您顺利使用本数据平台<br>为您解答专业知识</p>
+                        </div><button class="btn btn-outline-primary btn-lg query_now" type="button">Query Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="clean-block features register_section">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info" data-bss-hover-animate="shake">在线申请海洋海面高度数据访问权限</h2>
+                    <p><br>The staff will review your information and application data.<br><br></p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col">
+                        <div class="w-100 p-5 water">
+                            <div class="wave-square mx-auto my-5">
+                                <div class="wave-effect"><span></span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-5 feature-box"><i class="icon-star icon"></i>
+                        <h4>按照不同用途进行申请</h4>
+                        <p>本系统中含有科研教育、商用用途、个人用途、气象气候、防灾减灾等多种类数据用途申请，不同种类的申请将会有不同的专业人员进行审核</p><button class="btn btn-outline-primary btn-lg register_now" type="button">Apply Now</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="clean-block slider dark">
+            <section class="highlight-clean">
+                <div class="container">
+                    <div class="intro">
+                        <h2 class="text-center" data-bss-hover-animate="shake">数据查看</h2>
+                        <p class="text-center"><br>When your permissions are approved, you can obtain and view the data you need.<br><br></p>
+                    </div><img class="img-fluid UpnDown img_updown" src="./assets/img/data.png" alt="visuo xs816 drone">
+                    <div class="buttons"><a class="btn btn-primary search_medi" role="button">CHECK IT NOW</a></div>
+                </div>
+            </section>
+        </section>
+        <section class="clean-block about-us">
+            <div class="container">
+                <div class="block-heading">
+                    <h2 class="text-info" data-bss-hover-animate="shake">评分反馈</h2>
+                    <p><br>You can take a point or comment for the staff here<br><br></p>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-sm-6 col-lg-4 for_touch">
+                        <div class="card text-center clean-card"><img class="card-img-top w-100 d-block" src="http://a.hiphotos.bdimg.com/wisegame/pic/item/342c11dfa9ec8a13a3e666f3f303918fa0ecc021.jpg">
+                            <div class="card-body info">
+                                <h4 class="card-title">Score</h4>
+                                <p class="card-text"><br>Give your&nbsp;<br>usage experience a suitable score<br><br></p><button class="btn btn-outline-primary btn-lg feedback" type="button">Score Now</button>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-sm-6 col-lg-4 for_touch">
+                        <div class="card text-center clean-card"><img class="card-img-top w-100 d-block" src="https://i02piccdn.sogoucdn.com/99970a1c364d40d5">
+                            <div class="card-body info">
+                                <h4 class="card-title">Comment</h4>
+                                <p class="card-text"><br>Give your&nbsp;<br>service staff&nbsp;some sincere advice<br><br></p><button class="btn btn-outline-primary btn-lg feedback" type="button">Comment Now</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="page-footer dark">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <h5>Get started</h5>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Sign up</a></li>
+                        <li><a href="#">Downloads</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>About us</h5>
+                    <ul>
+                        <li><a href="#">Company Information</a></li>
+                        <li><a href="#">Contact us</a></li>
+                        <li><a href="#">Reviews</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Support</h5>
+                    <ul>
+                        <li><a href="#">FAQ</a></li>
+                        <li><a href="#">Help desk</a></li>
+                        <li><a href="#">Forums</a></li>
+                    </ul>
+                </div>
+                <div class="col-sm-3">
+                    <h5>Legal</h5>
+                    <ul>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Terms of Use</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="footer-copyright">
+            <p>© 2021 Copyright 1853557 ZH_hhhh</p>
+        </div>
+    </footer>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/baguettebox.js/1.10.0/baguetteBox.min.js"></script>
+    <script src="assets/js/smoothproducts.min.js"></script>
+    <script src="assets/js/theme.js"></script>
+    <script src="assets/js/PHP-Contact-Form-dark-1.js"></script>
+    <script src="assets/js/PHP-Contact-Form-dark.js"></script>
+    <script src="assets/js/cryptico.js"></script>
+    <script src="assets/js/no_encrypty.js"></script>
+</body>
+
+
+<script>
+    function Init_display_none()
+    {
+        $("#contact-hidden_personal_set").css('display', 'none')
+        $("#ford_name").val("")
+        $('#form_lastname').val("")
+        $('#form_email').val("")
+        $('#form_message').val("")
+    }
+
+    /* 获取当前账户所在信息 */
+    var user_no = parseInt(url_parser(window.location.search))
+    var succ_flag = "已经成功建立连接"
+
+    /* 初始时将个人信息display设置为none */
+    Init_display_none()
+
+    /*初始时通过后端获取患者姓名信息*/
+    function obtain_name()
+    {
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: true,
+            data:{
+                action: "search_Patient",
+                no: user_no,
+                no_op: user_no
+            },
+            datatype:'json',
+        }).then(function(res){
+            if(res['ret'] == 1){
+                res_list = res['retlist']
+                user_name = res_list[0]['name']
+                $(".obtain_info").text(user_name + ' ')
+                $(".obtain_info").css({
+                    'color':'rgba(0,0,255,1)'
+                })
+            }
+            else{
+                alert("服务器暂无连接")
+                console.log(res)
+            }
+        })
+    }
+    obtain_name()
+
+    /* 在点击dropdown-item1将个人设置显示出来 */
+    $(".dropdown-item1").click(function(){
+        $("#contact-hidden_personal_set").fadeIn(1000);
+    })
+
+    /* 在点击btn_close后 关闭个人信息设置 */
+    $('#btn_close').click(function(){
+        $("#contact-hidden_personal_set").fadeOut(1000);
+    })
+
+    /* 在点击.btn_ok后 向服务器发送数据 修改患者信息 */
+    $(".btn_ok").click(function(){
+        var name = $("#ford_name").val()
+        var gender = $('#form_lastname').val()
+        var age = $('#form_email').val()
+        var old = $('#form_message').val()
+
+        if(name == '' || gender == '' || age == '' || old == '')
+            return
+        else if (gender != 'male' && gender != 'female')
+            return
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: true,
+            data:{
+                action: "update_Patient",
+                no: user_no,
+                name: name,
+                v_age: age,
+                v_gender: gender,
+                v_aim: old,
+                no_op: user_no
+            },
+            datatype:'json',
+        }).then(function(res){
+            if(res['ret'] == 1){
+                alert('修改成功')
+                Init_display_none()
+                obtain_name()
+            }
+            else
+                alert('修改失败，请重试')
+        }).catch(function(res){
+            alert("服务器暂无连接")
+        })
+    })
+
+    /* 点击退出登录 退回到login界面 */
+    $("#btn_exit").click(function(){
+        window.location.replace("../login/login.html")
+    })
+
+    //获取今天的日期 返回字符串
+    function get_cua_date()
+    {
+        var myDate = new Date()
+        var year = myDate.getFullYear()
+        var month = myDate.getMonth()+1
+        var day = myDate.getDate()
+        return year+"-"+month+"-"+day
+    }
+
+    /* 点击register_now 进行挂号 */
+    $(".register_now").click(function(){
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: true,
+            data:{
+                action: "search_Register",
+                a_no_visitor: user_no,
+                a_date: get_cua_date(),
+                no_op: user_no
+            },
+            datatype:'json',
+        }).then(function(res){
+            if(res['ret'] == 1){
+                if(res['retlist'].length > 0){
+                    alert("您已挂号，请在个人设置中查看当前到号信息")
+                }
+                else{
+                    window.location.assign(url_generate("../register/register.html", [user_no]))
+                }
+            }
+            else
+                alert("服务器暂无连接")
+        }).catch(function(res){
+            alert("服务器暂无连接")
+        })
+    })
+
+    // 点击.feedback进行评分和意见反馈
+    $(".feedback").click(function(){
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: true,
+            data:{
+                action: "search_Register",
+                a_no_visitor: user_no,
+                no_op: user_no
+            },
+            datatype:'json',
+        }).then(function(res){
+            if(res['ret'] == 1){
+                if(res['retlist'].length == 0){
+                    alert("未查询到您有相关的挂号信息，请您先完成挂号")
+                }
+                else{
+                    var last_doc_no = res['retlist'].slice(-1)[0]['a_no_staff_id']
+                    window.location.assign(url_generate("../score_and_comment/score_comment.html", [last_doc_no]))
+                }
+            }
+            else
+                alert("服务器暂无连接")
+        }).catch(function(res){
+            alert("服务器暂无连接")
+        })
+    })
+
+    // 点击.search_medi进行药物信息查看 必须满足
+    $(".search_medi").click(function(){
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: true,
+            data:{
+                action: "search_Register",
+                a_no_visitor: user_no,
+                no_op: user_no
+            },
+            datatype:'json',
+        }).then(function(res){
+            if(res['ret'] == 1){
+                if(res['retlist'].length == 0){
+                    alert("未查询到您有相关的挂号信息，请您先完成挂号")
+                }
+                else{
+                    window.open(url_generate("../patient_look_for_medicine/patient_look_for_medicine.html", [user_no]))
+                }
+            }
+            else
+                alert("服务器暂无连接")
+        }).catch(function(res){
+            alert("服务器暂无连接")
+        })
+    })
+
+    $('#btn_exit').hover(function(){
+        $(this).css("cursor","pointer")
+    })
+
+    $('.dropdown-item').hover(function(){
+        $(this).css("cursor","pointer")
+    })
+
+    // 点击咨询按钮
+    $(".query_now").click(function(){
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: true,
+            data:{
+                action: "search_QueryAssist",
+                no_op: user_no
+            },
+            datatype:'json',
+            success: function(res){
+                if(res['ret'] == 1){
+                    var ret_list = res['retlist']
+                    var is_find = false
+                    for(var i in ret_list){
+                        if(ret_list[i]['state'] == '1'){
+
+                            // 将建立成功的标识写入
+                            $.ajax({
+                                type: 'post',
+                                url:"http://127.0.0.1:8000/user/api/",
+                                async: false,
+                                data:{
+                                    action: "add_Communication",
+                                    cs_time: get_cua_date(),
+                                    content: succ_flag,
+                                    cs_no: user_no,
+                                    cr_no: ret_list[i]['no_id'],
+                                    no_op: user_no
+                                },
+                                datatype:'json',
+                                success: function(res){
+                                    if(res['ret'] == 1){
+                                        // 新页面需要 发送者no 以及接收者no
+                                        is_find = true
+                                        window.location.assign(url_generate("../communication/communicate.html", [user_no, ret_list[i]['no_id']]))
+                                    }
+                                    else{
+                                        alert("服务器暂无连接")
+                                    }
+                                },
+                                error: function(){
+                                    alert("服务器暂无连接")
+                                }
+                            })
+                        }
+                    }
+                    if(is_find == false)
+                        alert("当前暂无空闲的咨询人员，请稍后重试")
+                }
+                else{
+                    alert("服务器暂无连接")
+                }
+            },
+            error: function(){
+                alert("服务器暂无连接")
+            }
+        })
+    })
+
+    //获取某个医生的当前到号号码
+    function get_certain_doctor_cur_register(doc_no)
+    {
+        var cur_register
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: false,
+            data:{
+                action: "search_Current_Register",
+                a_date: get_cua_date(),
+                a_no_staff: doc_no,
+                no_op: user_no
+            },
+            datatype:'json',
+            success:function(res){
+                if(res['retlist'].length == 0)
+                    cur_register = 0;
+                else
+                    cur_register = res['retlist'][res['retlist'].length-1]["a_index"]
+            },
+            error: function(){
+                alert("服务器暂无连接")
+            }
+        })
+        return cur_register
+    }
+
+
+    // 点击查看到号信息
+    $(".dropdown-item2").click(function(){
+        var reg_doc_no, reg_your_no, reg_cur_no
+        var is_reg = false
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: false,
+            data:{
+                action: "search_Register",
+                a_date: get_cua_date(),
+                a_no_visitor: user_no,
+                no_op: user_no
+            },
+            datatype:'json',
+            success:function(res){
+                if(res['ret'] == 1){
+                    if(res['retlist'].length == 0){
+                        alert("您当前还未挂号")
+                        return
+                    }
+                    else{
+                        reg_doc_no = res['retlist'][0]['a_no_staff_id']
+                        reg_your_no = res['retlist'][0]['a_index']
+                        is_reg = true
+                    }
+                }
+                else{
+                    alert("服务器暂无连接")
+                    return
+                }
+            },
+            error: function(){
+                alert("服务器暂无连接")
+                return
+            }
+        })
+        if(is_reg == false)
+            return
+        reg_cur_no = get_certain_doctor_cur_register(reg_doc_no)
+
+        alert("您挂号数为: " + reg_your_no + " 当前到号数为: " + reg_cur_no)
+    })
+</script>
+</html>

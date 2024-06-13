@@ -1,0 +1,59 @@
+.wave-circle {
+  width: 150px;
+  height: 150px;
+  border: 5px solid #fff;
+  box-shadow: 0 0 0 5px #4973ff;
+  border-radius: 50%;
+  overflow: hidden;
+}
+
+.wave-square {
+  width: 280px;
+  height: 280px;
+  #border: 1px solid #fff;
+  box-shadow: 0 0 0 5px #4973ff;
+  border-radius: 10%;
+  overflow: hidden;
+}
+
+.wave-effect {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  background: #4973ff;
+  border-radius: 0%;
+  box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
+}
+
+.wave-effect:before, .wave-effect:after {
+  content: '';
+  position: absolute;
+  width: 200%;
+  height: 200%;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%,-75%);
+  background: #000;
+}
+
+.wave-effect:before {
+  border-radius: 45%;
+  background: rgba(255, 255, 255, 1);
+  animation: wave-animate 5s linear infinite;
+}
+
+.wave-effect:after {
+  border-radius: 40%;
+  background: rgba(255, 255, 255, .5);
+  animation: wave-animate 10s linear infinite;
+}
+
+@keyframes wave-animate {
+  0% {
+    transform: translate(-50%,-75%) rotate(0deg);
+  }
+  100% {
+    transform: translate(-50%,-75%) rotate(360deg);
+  }
+}
+

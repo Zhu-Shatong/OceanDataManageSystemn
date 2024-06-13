@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>communicate</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/Add-Another-Button.css">
+    <link rel="stylesheet" href="assets/css/Data-Table-1.css">
+    <link rel="stylesheet" href="assets/css/Data-Table.css">
+    <link rel="stylesheet" href="assets/css/food-table-meny.css">
+    <link rel="stylesheet" href="assets/css/Google-Style-Text-Input.css">
+    <link rel="stylesheet" href="assets/css/Growing-Search-Bar-Animated-Text-Input.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.quilljs.com/1.0.0/quill.snow.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<style>
+
+    body {
+        background: url("./assets/img/sea.jpg");
+        background-size: cover;
+    }
+
+    body::after {
+        content: "";
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(255, 255, 255, 0.5);
+        z-index: -1;
+    }
+
+    .send{
+        float: left;
+    }
+    .receive{
+        float: right;
+    }
+    
+    .img{
+        width: 50px;
+        height: 50px;
+        border-radius: 90px;
+        cursor: pointer;
+    }
+
+    .receive:hover{
+        box-shadow: 0 0 8px 8px lightblue;
+    }
+    .send:hover{
+        box-shadow: 0 0 8px 8px lightblue;
+    }
+</style>
+
+<body>
+    <section>
+        <div class="text-center" style="padding-top: 30px;padding-bottom: 20px;">
+            <h1 class="text-monospace" style="font-style: normal;font-weight: bold;color: lightblue;font-size: 70px;text-align: center;filter: grayscale(40%);text-shadow: 1px 0px 2px rgba(52,58,64,0.99);">平台客服</h1>
+            <hr style="width: 100px;border: 3px solid var(--light) ;">
+        </div>
+        <div class="border rounded-0 border">
+            <div class="container-fluid text-monospace">
+                <div class="row row-size">
+                    <div class="col">
+                        <div class="table-responsive">
+                            <table class="table">
+                                <thead style="background: rgb(82, 125, 211);color: var(--light);border-top-color: rgba(128,128,128,0);">
+                                    <tr style="border-top-color: rgba(128,128,128,0);">
+                                        <th style="font-size: 20px;text-align: center;color: var(--light);" class="remind">发送者名字&nbsp; TO&nbsp; 接收者名字</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr></tr>
+                                    <tr>
+                                        <td class="menu-item" style="background: rgba(255,255,255,0);border-top-width: 0px;"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="menu-item" style="background: rgba(255,255,255,0);">
+                                            <div></div>
+                                            <div class="col phram-info" style="overflow: auto;"><table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
+        <tbody class="html">
+            <tr>
+                <td class="send"> <img src = "./assets/img/p2.png"  class="img">&nbsp Tiger Nixon</td>
+            </tr>
+            <tr>
+                <td class="receive">Tiger Nixon 111111111111111111 &nbsp<img src="./assets/img/p1.webp" class="img"></td>
+            </tr>
+        </tbody>
+    </table>
+                                                <div class="table-responsive">
+                                                    <table class="table">
+                                                        <thead style="background: rgb(82, 125, 211);color: var(--light);border-top-color: rgba(128,128,128,0);">
+                                                            <tr style="border-top-color: rgba(128,128,128,0);"></tr>
+                                                        </thead>
+                                                        <tbody class="medicine-info">
+                                                            <tr></tr>
+                                                            <tr>
+                                                                <td class="menu-item" style="background: rgba(255,255,255,0);border-top-width: 0px;"></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div></div>
+                        <div id="toolbar"></div>
+                        <div id="editor"></div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <button class="btn btn-light pull-right send_msg" id="get-content" type="button">Send</button>
+                        <button class="btn btn-light pull-right exit" id="get-content" type="button">Exit</button>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <p id="content"> </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+    <script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap.min.js"></script>
+    <script src="https://cdn.quilljs.com/1.0.0/quill.js"></script>
+    <script src="assets/js/Quill-Text-Editor.js"></script>
+    <script src="assets/js/cryptico.js"></script>
+    <script src="assets/js/no_encrypty.js"></script>
+</body>
+
+<script>
+    var receive_list = ["已经成功建立连接"]    // 定义变量去接收收到的信息   // 若某一方收到已退出的提示 则再发送无效
+    var web_html =""
+    var exit_flag = "已退出"
+
+    function sleep(interval)
+    {
+        return new Promise(resolve => {
+            setTimeout(resolve, interval)
+        })
+    }
+
+
+    /* 获取当前医生的账户信息 */
+    var tmp_arr = url_parser(window.location.search)
+    var [cs_no, cr_no] = [parseInt(tmp_arr[0]), parseInt(tmp_arr[1])]
+
+
+    function obtain_name(no)
+    {
+        var name
+        if(no[0] == '2'){  //咨询人员
+            $.ajax({
+                type: 'post',
+                url:"http://127.0.0.1:8000/user/api/",
+                async: false,
+                data:{
+                    action: "search_QueryAssist",
+                    no: no,
+                    no_op:no
+                },
+                datatype:'json',
+                success: function(res){
+                    if(res['ret'] == 1){
+                        name = res['retlist'][0]['name']
+                    }
+                    else{
+                        alert("服务器暂无连接")
+                    }
+                },
+                error: function(){
+                    alert("服务器暂无连接")
+                }
+            })
+        }
+        else if(no[0] == '3'){
+            $.ajax({
+                type: 'post',
+                url:"http://127.0.0.1:8000/user/api/",
+                async: false,
+                data:{
+                    action: "search_Patient",
+                    no: no,
+                    no_op:no
+                },
+                datatype:'json',
+                success: function(res){
+                    if(res['ret'] == 1){
+                        name = res['retlist'][0]['name']
+                    }
+                    else{
+                        alert("服务器暂无连接")
+                    }
+                },
+                error: function(){
+                    alert("服务器暂无连接")
+                }
+            })
+        }
+        return name
+    }
+
+    function Init()
+    {
+        var cs_name, cr_name
+        cs_name = obtain_name(cs_no.toString())
+        cr_name = obtain_name(cr_no.toString())
+
+        $(".remind").text(cs_name + " TO " + cr_name)
+        $(".html").html(web_html)
+    }
+
+    //获取今天的日期 返回字符串
+    function get_cua_date()
+    {
+        var myDate = new Date()
+        var year = myDate.getFullYear()
+        var month = myDate.getMonth()+1
+        var day = myDate.getDate()
+        return year+"-"+month+"-"+day
+    }
+
+    function send_msg(msg)
+    {
+        // 首先在receive_list 检查 是否已收到 已退出
+        var tmp = receive_list.reverse()
+        for(var i in tmp){
+            if(tmp[i] == "已退出"){
+                alert("另一端用户已退出，请您自行退出")
+                return
+            }
+        }
+        
+        // 空语句不插入
+        if(msg == ""){
+            alert("您未输入任何消息")
+            return
+        }
+
+        // 然后在communication中插入新语句
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: false,
+            data:{
+                action: "add_Communication",
+                cs_no: cs_no,
+                cr_no: cr_no,
+                cs_time: get_cua_date(),
+                content: msg,
+                no_op:cs_no
+            },
+            datatype:'json',
+            success: function(res){
+                if(res['ret'] != 1){
+                    alert("服务器暂无连接")
+                }
+            },
+            error: function(){
+                alert("服务器暂无连接")
+            }
+        })
+
+        // 对web_html 进行更新
+        if(cs_no.toString()[0] == '2')
+            web_html += '<tr> <td class="send"> <img src = "./assets/img/p2.png" class="img"> ' + msg + '</td> </tr>'
+        else
+            web_html += '<tr> <td class="send"> <img src = "./assets/img/p1.webp" class="img"> ' + msg + '</td> </tr>'
+        $(".html").html(web_html)
+    }
+
+    function find_in_receive_list(msg)
+    {
+        for(var i in receive_list){
+            if(msg == receive_list[i])
+                return true
+        }
+        return false
+    }
+
+    async function receive_msg()
+    {
+        // ajax轮询 确认消息
+        while(true){
+            $.ajax({
+                type: 'post',
+                url:"http://127.0.0.1:8000/user/api/",
+                async: false,
+                data:{
+                    action: "search_Communication",
+                    cs_no: cr_no,
+                    cr_no: cs_no,
+                    cs_time: get_cua_date(),
+                    no_op: cr_no
+                },
+                datatype:'json',
+                success: function(res){
+                    if(res['ret'] == 1){
+                        var ret_list = res['retlist']
+                        for(var i in ret_list){
+                            if(find_in_receive_list(ret_list[i]['content'])){
+                                continue
+                            }
+                            else{
+                                // 若不在则将其加入receive_list 并更新html
+                                receive_list.push(ret_list[i]['content'])
+                                if(ret_list[i]['content'] != exit_flag){
+                                    if(cr_no.toString()[0] == '2')
+                                        web_html += '<tr><td class="receive">' + ret_list[i]['content'] + ' <img src="./assets/img/p2.png" class="img"></td></tr>'
+                                    else
+                                        web_html += '<tr><td class="receive">' + ret_list[i]['content'] + ' <img src="./assets/img/p1.webp" class="img"></td></tr>'
+                                }
+                            }
+                        }
+                        $(".html").html(web_html)
+                    }
+                    else{
+                        alert("服务器暂无连接")
+                    }
+                },
+                error: function(){
+                    alert("服务器暂无连接")
+                }
+            })
+            await sleep(500)
+        }
+    }
+
+    Init()
+
+    // 点击发送按钮 发送消息
+    $(".send_msg").click(function(){
+        var msg = $("#editor").text()
+        send_msg(msg)
+    })
+
+    receive_msg()
+
+    // 退出按钮点击 回到对应页面
+    $(".exit").click(async function(){
+        // 首先在communication中插入结束标志语句
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: false,
+            data:{
+                action: "add_Communication",
+                cs_no: cs_no,
+                cr_no: cr_no,
+                cs_time: get_cua_date(),
+                content: exit_flag,
+                no_op:cs_no
+            },
+            datatype:'json',
+            success: function(res){
+                if(res['ret'] != 1){
+                    alert("服务器暂无连接")
+                    return
+                }
+            },
+            error: function(){
+                alert("服务器暂无连接")
+                return
+            }
+        })
+
+        // 等待一段时间确保 对方一定能够先收到结束标志
+        await sleep(1000)
+
+        // 删除数据库内所有该阶段已发送信息
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: false,
+            data:{
+                action: "del_Communication",
+                cs_no: cs_no,
+                cr_no: cr_no,
+                cs_time: get_cua_date(),
+                no_op:cs_no
+            },
+            datatype:'json',
+            success: function(res){
+                if(res['ret'] != 1){
+                    alert("服务器暂无连接")
+                    return
+                }
+            },
+            error: function(){
+                alert("服务器暂无连接")
+                return
+            }
+        })
+
+        $.ajax({
+            type: 'post',
+            url:"http://127.0.0.1:8000/user/api/",
+            async: false,
+            data:{
+                action: "del_Communication",
+                cs_no: cr_no,
+                cr_no: cs_no,
+                cs_time: get_cua_date(),
+                no_op:cr_no
+            },
+            datatype:'json',
+            success: function(res){
+                if(res['ret'] != 1){
+                    alert("服务器暂无连接")
+                    return
+                }
+            },
+            error: function(){
+                alert("服务器暂无连接")
+                return
+            }
+        })
+
+        //退回到发送者相应页面
+        if(cs_no.toString()[0] == '2'){
+            // 首先更新服务人员的状态标识 将其置0
+            $.ajax({
+                type: 'post',
+                url:"http://127.0.0.1:8000/user/api/",
+                async: true,
+                data:{
+                    action: "update_QueryAssist",
+                    no: cs_no,
+                    state: 0,
+                    no_op:cs_no
+                },
+                datatype:'json',
+                success: function(res){
+                    if(res['ret'] != 1){
+                        alert("服务器暂无连接")
+                    }
+                },
+                error: function(){
+                    alert("服务器暂无连接")
+                }
+            })
+            window.location.assign(url_generate('../query/query.html', [cs_no]))
+        }
+        else{
+            window.location.assign(url_generate('../patient/patient.html', [cs_no]))
+        }
+    })
+</script>
+</html>
