@@ -29,6 +29,9 @@ INSERT INTO `common_permission` (p_index, p_no, p_depict)
 VALUES (%s, %s, %s)
 """
 
+# 清空数据库
+cursor.execute("TRUNCATE TABLE `common_permission`")
+
 # 遍历数据并插入到数据库中
 for index, row in data.iterrows():
     max_p_index += 1

@@ -137,7 +137,7 @@
 <script>
     var query_no = parseInt(url_parser(window.location.search))
 
-    /*初始时通过后端获取医生姓名信息 和综合评分*/
+    /*初始时通过后端获取工作人员姓名信息 和综合评分*/
     function obtain_name()
     {
         $.ajax({
@@ -201,7 +201,7 @@
             datatype:'json',
             success: function(res){
                 if(res['ret'] == 1){
-                    alert("正在为您寻找相应患者，请稍等")
+                    alert("正在为您寻找相应访客，请稍等")
                     accept_query = 1
                     find_patient()
                 }
@@ -222,7 +222,7 @@
         })
     }
 
-    // 匹配患者进行咨询
+    // 匹配访客进行咨询
     async function find_patient()
     {
         while(accept_query == 1){

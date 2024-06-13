@@ -36,18 +36,18 @@ def dispatcher(request):
         return search_QueryAssist(request)
     elif action == "update_QueryAssist":
         return update_QueryAssist(request)
-    elif action == "search_Patient":
-        return search_Patient(request)
-    elif action == "add_Patient":
-        return add_Patient(request)
-    elif action == "update_Patient":
-        return update_Patient(request)
-    elif action == "search_Doctor":
-        return search_Doctor(request)
-    elif action == "update_Doctor":
-        return update_Doctor(request)
-    elif action == "search_Medicine":
-        return search_Medicine(request)
+    elif action == "search_Visitor":
+        return search_Visitor(request)
+    elif action == "add_Visitor":
+        return add_Visitor(request)
+    elif action == "update_Visitor":
+        return update_Visitor(request)
+    elif action == "search_Staff":
+        return search_Staff(request)
+    elif action == "update_Staff":
+        return update_Staff(request)
+    elif action == "search_Dataset":
+        return search_Dataset(request)
     elif action == "search_Score":
         return search_Score(request)
     elif action == "add_Score":
@@ -56,24 +56,24 @@ def dispatcher(request):
         return search_Comment(request)
     elif action == "add_Comment":
         return add_Comment(request)
-    elif action == "search_Current_Register":
-        return search_Current_Register(request)
-    elif action == "add_Current_Register":
-        return add_Current_Register(request)
-    elif action == "update_Current_Register":
-        return update_Current_Register(request)
-    elif action == "search_Register":
-        return search_Register(request)
-    elif action == "add_Register":
-        return add_Register(request)
+    elif action == "search_Current_Apply":
+        return search_Current_Apply(request)
+    elif action == "add_Current_Apply":
+        return add_Current_Apply(request)
+    elif action == "update_Current_Apply":
+        return update_Current_Apply(request)
+    elif action == "search_Apply":
+        return search_Apply(request)
+    elif action == "add_Apply":
+        return add_Apply(request)
     elif action == "search_Communication":
         return search_Communication(request)
     elif action == "add_Communication":
         return add_Communication(request)
     elif action == "del_Communication":
         return del_Communication(request)
-    elif action == "search_Prescription":
-        return search_Prescription(request)
+    elif action == "search_Authorization":
+        return search_Authorization(request)
     elif action == "add_Prescription":
         return add_Prescription(request)
     elif action == "write_log":
@@ -83,9 +83,9 @@ def dispatcher(request):
 
 
 '''
-    对挂号时每个医生的锁表进行管理
-    doc_no: 申请锁的医生账号
-    pat_np: 挂号患者账号
+    对挂号时每个工作人员的锁表进行管理
+    doc_no: 申请锁的工作人员账号
+    pat_np: 挂号访客账号
     op: 操作类型（读或写） 分别为1 2
     type: 加锁或者释放锁 1 加锁 2 释放锁
     锁分为两种形式：共享锁和排他锁————  共享锁为读锁  排他锁为写锁
@@ -272,16 +272,16 @@ def update_QueryAssist(request):
 
 
 '''
-    根据输入的患者编号返回患者信息
-    action: search_Patient
+    根据输入的访客编号返回访客信息
+    action: search_Visitor
     data: 所要筛选的信息
 '''
 
 
-def search_Patient(request):
+def search_Visitor(request):
     # 添加权限判断操作
     no_op = request.params.get('no_op', None)
-    if not Permission_detect(no_op, 'search_Patient'):
+    if not Permission_detect(no_op, 'search_Visitor'):
         return JsonResponse({'ret': 0})
     qs = Visitor.objects.values()
     _no = request.params.get('no', None)
@@ -291,22 +291,22 @@ def search_Patient(request):
 
 
 '''
-    添加患者
-    action: add_Patient
+    添加访客
+    action: add_Visitor
     data: 添加的数据
 '''
 
 
-def add_Patient(request):
+def add_Visitor(request):
     # 添加权限判断操作
     no_op = request.params.get('no_op', None)
-    if not Permission_detect(no_op, 'add_Patient'):
+    if not Permission_detect(no_op, 'add_Visitor'):
         return JsonResponse({'ret': 0})
     info = request.params
     try:
         Visitor.objects.create(no_id=info['no'], name=info['name'], v_age=info['v_age'],
                                v_gender=info['v_gender'], v_aim=info['v_aim'])
-        change_log('add_Patient ' + info['no'] + ' ' + info['name'] +
+        change_log('add_Visitor ' + info['no'] + ' ' + info['name'] +
                    ' ' + info['v_age'] + ' ' + info['v_gender'])
         return JsonResponse({'ret': 1})
     except:
@@ -314,16 +314,16 @@ def add_Patient(request):
 
 
 '''
-    对患者个人信息进行修改
-    action: update_Patient
+    对访客个人信息进行修改
+    action: update_Visitor
     data: 新数据
 '''
 
 
-def update_Patient(request):
+def update_Visitor(request):
     # 添加权限判断操作
     no_op = request.params.get('no_op', None)
-    if not Permission_detect(no_op, 'update_Patient'):
+    if not Permission_detect(no_op, 'update_Visitor'):
         return JsonResponse({'ret': 0})
     info = request.params
     update_no = info['no']
@@ -339,25 +339,25 @@ def update_Patient(request):
             _patient.v_aim = info['v_aim']
         # !!! 不能忘记save
         _patient.save()
-        change_log('update_Patient ' + info['no'] + ' ' +
+        change_log('update_Visitor ' + info['no'] + ' ' +
                    info['name'] + ' ' + info['v_age'] + ' ' + info['v_gender'])
         return JsonResponse({'ret': 1})
     except:
-        return JsonResponse({'ret': 0, 'msg': '患者信息修改失败'})
+        return JsonResponse({'ret': 0, 'msg': '访客信息修改失败'})
 
 
 '''
-    根据输入的医生编号返回医生信息
-    action: search_Doctor
+    根据输入的工作人员编号返回工作人员信息
+    action: search_Staff
     data: 所要筛选的信息
     可根据账号或者科室信息进行查询
 '''
 
 
-def search_Doctor(request):
+def search_Staff(request):
     # 添加权限判断操作
     no_op = request.params.get('no_op', None)
-    if not Permission_detect(no_op, 'search_Doctor'):
+    if not Permission_detect(no_op, 'search_Staff'):
         return JsonResponse({'ret': 0})
     qs = Staff.objects.values()
     _no = request.params.get('no', None)
@@ -370,16 +370,16 @@ def search_Doctor(request):
 
 
 '''
-    更新医生信息
-    action: update_Doctor
-    data: 所要更新的医生信息
+    更新工作人员信息
+    action: update_Staff
+    data: 所要更新的工作人员信息
 '''
 
 
-def update_Doctor(request):
+def update_Staff(request):
     # 添加权限判断操作
     no_op = request.params.get('no_op', None)
-    if not Permission_detect(no_op, 'update_Doctor'):
+    if not Permission_detect(no_op, 'update_Staff'):
         return JsonResponse({'ret': 0})
     info = request.params
     doc_no = info['no']
@@ -400,26 +400,26 @@ def update_Doctor(request):
         # !!! 不能忘记save
         _doctor.save()
         if 's_index' in info:
-            change_log('update_Doctor ' + info['no'] + ' ' + info['s_index'])
+            change_log('update_Staff ' + info['no'] + ' ' + info['s_index'])
         else:
-            change_log('update_Doctor ' + info['no'] + ' ' +
+            change_log('update_Staff ' + info['no'] + ' ' +
                        info['s_time_begin'] + ' ' + info['s_time_end'])
         return JsonResponse({'ret': 1})
     except:
-        return JsonResponse({'ret': 0, 'msg': f'no为{doc_no}的医生信息不存在'})
+        return JsonResponse({'ret': 0, 'msg': f'no为{doc_no}的工作人员信息不存在'})
 
 
 '''
     根据输入的药物名称，返回药物信息
-    action: search_Medicine
+    action: search_Dataset
     data: 所要筛选的信息
 '''
 
 
-def search_Medicine(request):
+def search_Dataset(request):
     # 添加权限判断操作
     no_op = request.params.get('no_op', None)
-    if not Permission_detect(no_op, 'search_Medicine'):
+    if not Permission_detect(no_op, 'search_Dataset'):
         return JsonResponse({'ret': 0})
     qs = Dataset.objects.values()
     _mname = request.params.get('d_name', None)
@@ -429,7 +429,7 @@ def search_Medicine(request):
 
 
 '''
-    根据输入的医生编号，返回其评分信息
+    根据输入的工作人员编号，返回其评分信息
     action: search_Score
     data: 筛选信息
 '''
@@ -470,7 +470,7 @@ def add_Score(request):
 
 
 '''
-    根据输入的医生编号，返回其意见信息
+    根据输入的工作人员编号，返回其意见信息
     action: search_Comment
     data: 所要筛选信息
 '''
@@ -511,16 +511,16 @@ def add_Comment(request):
 
 
 '''
-    根据当天日期和医生编号，返回当前到号信息
-    action: search_Current_Register
+    根据当天日期和工作人员编号，返回当前到号信息
+    action: search_Current_Apply
     data: 筛选信息
 '''
 
 
-def search_Current_Register(request):
+def search_Current_Apply(request):
     # 添加权限判断操作
     no_op = request.params.get('no_op', None)
-    if not Permission_detect(no_op, 'search_Current_Register'):
+    if not Permission_detect(no_op, 'search_Current_Apply'):
         return JsonResponse({'ret': 0})
     qs = Current_Apply.objects.values()
     _rnodoctor = request.params.get('a_no_staff', None)
@@ -534,21 +534,21 @@ def search_Current_Register(request):
 
 '''
     新增当前叫号信息 主要用于初始化操作
-    action: add_Current_Register
+    action: add_Current_Apply
     data: 新增信息
 '''
 
 
-def add_Current_Register(request):
+def add_Current_Apply(request):
     # 添加权限判断操作
     no_op = request.params.get('no_op', None)
-    if not Permission_detect(no_op, 'add_Current_Register'):
+    if not Permission_detect(no_op, 'add_Current_Apply'):
         return JsonResponse({'ret': 0})
     info = request.params
     try:
         Current_Apply.objects.create(a_index=info['a_index'], a_date=info['a_date'],
                                      a_no_staff_id=info['a_no_staff'])
-        change_log('add_Current_Register ' +
+        change_log('add_Current_Apply ' +
                    info['a_no_staff'] + ' ' + info['a_date'] + ' ' + info['a_index'])
         return JsonResponse({'ret': 1})
     except:
@@ -556,16 +556,16 @@ def add_Current_Register(request):
 
 
 '''
-    根据医生编号 更新当前叫号
-    action: update_Current_Register
+    根据工作人员编号 更新当前叫号
+    action: update_Current_Apply
     data: 更新信息
 '''
 
 
-def update_Current_Register(request):
+def update_Current_Apply(request):
     # 添加权限判断操作
     no_op = request.params.get('no_op', None)
-    if not Permission_detect(no_op, 'update_Current_Register'):
+    if not Permission_detect(no_op, 'update_Current_Apply'):
         return JsonResponse({'ret': 0})
     info = request.params
     _doctor = info['a_no_staff']
@@ -576,24 +576,24 @@ def update_Current_Register(request):
             current_reg.a_index = info['a_index']
         # !!! 不能忘记save
         current_reg.save()
-        change_log('update_Current_Register ' +
+        change_log('update_Current_Apply ' +
                    info['a_no_staff'] + ' ' + info['a_date'] + ' ' + info['a_index'])
         return JsonResponse({'ret': 1})
     except:
-        return JsonResponse({'ret': 0, 'msg': f'no为{_doctor}的医生不存在'})
+        return JsonResponse({'ret': 0, 'msg': f'no为{_doctor}的工作人员不存在'})
 
 
 '''
-    查询当前挂号信息 患者根据自身编号 挂号医生编号 以及挂号日期 查询挂号号码
-    action: search_Register
+    查询当前挂号信息 访客根据自身编号 挂号工作人员编号 以及挂号日期 查询挂号号码
+    action: search_Apply
     data: 筛选信息
 '''
 
 
-def search_Register(request):
+def search_Apply(request):
     # 添加权限判断操作
     no_op = request.params.get('no_op', None)
-    if not Permission_detect(no_op, 'search_Register'):
+    if not Permission_detect(no_op, 'search_Apply'):
         return JsonResponse({'ret': 0})
     _rdate = request.params.get('a_date', None)
     _rdoctor = request.params.get('a_no_staff', None)
@@ -616,17 +616,17 @@ def search_Register(request):
 
 
 '''
-    新增挂号信息 根据当天日期 医生编号 患者编号 新增挂号号码
-    action: add_Register
+    新增挂号信息 根据当天日期 工作人员编号 访客编号 新增挂号号码
+    action: add_Apply
     data: 新增
     !!! 多对多关系插入方式不同
 '''
 
 
-def add_Register(request):
+def add_Apply(request):
     # 添加权限判断操作
     no_op = request.params.get('no_op', None)
-    if not Permission_detect(no_op, 'add_Register'):
+    if not Permission_detect(no_op, 'add_Apply'):
         return JsonResponse({'ret': 0})
     info = request.params
     try:
@@ -636,7 +636,7 @@ def add_Register(request):
                              a_no_staff_id=info['a_no_staff'], a_no_visitor_id=info['a_no_visitor'])
         ''' 解锁 '''
         Lock_Manage(info['a_no_staff'], info['a_no_visitor'], 2, 2)
-        change_log('add_Register ' + info['a_no_staff'] + ' ' + info['a_no_visitor'] + ' ' + info['a_date']
+        change_log('add_Apply ' + info['a_no_staff'] + ' ' + info['a_no_visitor'] + ' ' + info['a_date']
                    + ' ' + info['a_index'])
         return JsonResponse({'ret': 1})
     except:
@@ -719,16 +719,16 @@ def del_Communication(request):
 
 
 '''
-    根据挂号日期，挂号号码，患者编号 查询药物数量和药物信息
-    action: search_Prescription
+    根据挂号日期，挂号号码，访客编号 查询药物数量和药物信息
+    action: search_Authorization
     data: 筛选信息
 '''
 
 
-def search_Prescription(request):
+def search_Authorization(request):
     # 添加权限判断操作
     no_op = request.params.get('no_op', None)
-    if not Permission_detect(no_op, 'search_Prescription'):
+    if not Permission_detect(no_op, 'search_Authorization'):
         return JsonResponse({'ret': 0})
     qs = Authorization.objects.values()
     _prindex = request.params.get('Au_index', None)

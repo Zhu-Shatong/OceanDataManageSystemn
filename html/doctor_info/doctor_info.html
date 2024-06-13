@@ -91,7 +91,7 @@
 </body>
 
 <script>
-    // 获取当前医生账号信息 
+    // 获取当前工作人员账号信息 
     var doc_no = parseInt(url_parser(window.location.search))
 
     function format(time_str)
@@ -106,7 +106,7 @@
         url:"http://127.0.0.1:8000/user/api/",
         async: true,
         data:{
-            action: "search_Doctor",
+            action: "search_Staff",
             no: doc_no,
             no_op: doc_no
         },
@@ -121,16 +121,16 @@
             doc_time_begin = ret_list['s_time_begin']
             doc_time_end = ret_list['s_time_end']
 
-            // 更新医生名字
+            // 更新工作人员名字
             $(".doc_name").text(doc_name)
             
-            // 更新医生职称
+            // 更新工作人员职称
             $(".doc_prof").text(doc_prof)
 
-            // 更新医生科室
+            // 更新工作人员科室
             $(".doc_depart").text(doc_depart)
 
-            // 更新医生综合评分
+            // 更新工作人员综合评分
             $(".doc_index").text(doc_index)
 
             // 更新就诊时间

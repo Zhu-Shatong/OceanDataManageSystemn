@@ -140,7 +140,7 @@ class Comment(models.Model):
     cc_content = models.CharField(max_length=100)
     # 反馈时间
     cc_time = models.DateTimeField()
-    # 意见针对的医生编号 外码
+    # 意见针对的工作人员编号 外码
     no = models.ForeignKey(Staff, on_delete=models.CASCADE, db_index=True)
 
 
@@ -218,7 +218,7 @@ class Authorization(models.Model):
         Dataset, on_delete=models.CASCADE, db_index=True)
     # 药物数量
     Au_num = models.IntegerField()
-    # 患者编号
+    # 访客编号
     Au_no = models.ManyToManyField(Visitor)
     # 挂号号码
     Au_index = models.IntegerField(db_index=True)

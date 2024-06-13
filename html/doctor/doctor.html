@@ -97,7 +97,7 @@
                     <div class="col-md-6">
                         <h3>权限审核介绍</h3>
                         <div class="getting-started-info">
-                            <p>系统提供该接口用于数据平台工作人员为用户的数据访问申请进行审核<br>受理完毕后患者可对海洋海面高度数据进行查看<br>
+                            <p>系统提供该接口用于数据平台工作人员为用户的数据访问申请进行审核<br>受理完毕后访客可对海洋海面高度数据进行查看<br>
                         </div><button class="btn btn-outline-primary btn-lg prescribe" type="button">Start Now</button>
                     </div>
                 </div>
@@ -177,13 +177,13 @@
         $('#form_email').val("")
     }
 
-    /* 获取当前医生的账户信息 */
+    /* 获取当前工作人员的账户信息 */
     var doc_no = parseInt(url_parser(window.location.search))
 
     /* 初始时将个人信息display设置为none */
     Init_display_none()
 
-    /*初始时通过后端获取医生姓名信息 和综合评分*/
+    /*初始时通过后端获取工作人员姓名信息 和综合评分*/
     function obtain_name()
     {
         $.ajax({
@@ -191,7 +191,7 @@
             url:"http://127.0.0.1:8000/user/api/",
             async: true,
             data:{
-                action: "search_Doctor",
+                action: "search_Staff",
                 no: doc_no,
                 no_op: doc_no
             },
@@ -220,7 +220,7 @@
         $("#contact-hidden_personal_set").fadeOut(1000);
     })
 
-    /* 在点击.btn_ok后 向服务器发送数据 修改患者信息 */
+    /* 在点击.btn_ok后 向服务器发送数据 修改访客信息 */
     $(".btn_ok").click(function(){
         var time_begin = $(".form_time_begin").val()
         var time_end = $(".form_time_end").val()
@@ -234,7 +234,7 @@
             url:"http://127.0.0.1:8000/user/api/",
             async: true,
             data:{
-                action: "update_Doctor",
+                action: "update_Staff",
                 no: doc_no,
                 s_time_begin: time_begin,
                 s_time_end: time_end,
@@ -276,7 +276,7 @@
         $(this).css("cursor","pointer")
     })
 
-    // 获取医生当前最大挂号号码
+    // 获取工作人员当前最大挂号号码
     function get_certain_doctor_max_register()
     {
         var max_register_cnt = 0
@@ -285,7 +285,7 @@
             url:"http://127.0.0.1:8000/user/api/",
             async: false,
             data:{
-                action: "search_Register",
+                action: "search_Apply",
                 a_date: get_cua_date(),
                 a_no_staff: doc_no,
                 no_op: doc_no
@@ -304,7 +304,7 @@
         return max_register_cnt
     }
 
-    // 获取医生当前叫号号码
+    // 获取工作人员当前叫号号码
     function get_certain_doctor_cur_register()
     {
         var cur_register
@@ -313,7 +313,7 @@
             url:"http://127.0.0.1:8000/user/api/",
             async: false,
             data:{
-                action: "search_Current_Register",
+                action: "search_Current_Apply",
                 a_date: get_cua_date(),
                 a_no_staff: doc_no,
                 no_op: doc_no
@@ -355,7 +355,7 @@
                     url:"http://127.0.0.1:8000/user/api/",
                     async: true,
                     data:{
-                        action: "add_Current_Register",
+                        action: "add_Current_Apply",
                         a_index: cur_reg_cnt,
                         a_date: get_cua_date(),
                         a_no_staff: doc_no,
@@ -379,7 +379,7 @@
                     url:"http://127.0.0.1:8000/user/api/",
                     async: true,
                     data:{
-                        action: "update_Current_Register",
+                        action: "update_Current_Apply",
                         a_index: cur_reg_cnt,
                         a_date: get_cua_date(),
                         a_no_staff: doc_no,

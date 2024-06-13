@@ -1,187 +1,238 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
     <title>register_new_account</title>
-    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
-    <link rel="stylesheet" href="assets/css/Login-Form-blue-Gradient-1.css">
-    <link rel="stylesheet" href="assets/css/Login-Form-blue-Gradient.css">
-    <link rel="stylesheet" href="assets/css/styles.css">
-</head>
-<style>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css" />
+    <link rel="stylesheet" href="assets/css/Login-Form-blue-Gradient-1.css" />
+    <link rel="stylesheet" href="assets/css/Login-Form-blue-Gradient.css" />
+    <link rel="stylesheet" href="assets/css/styles.css" />
+  </head>
+  <style>
     body {
-        background: url("./assets/background.jpg");
-        background-size: cover;
+      background: url("./assets/background.jpg");
+      background-size: cover;
     }
-</style>
+  </style>
 
-<body>
+  <body>
     <section>
-        <div class="lgp-hd">
-            <h2><strong>用 户 账 号 注 册</strong></h2>
-            <h5><strong>REGISTER NEW ACCOUNT</strong></h5>
+      <div class="lgp-hd">
+        <h2><strong>用 户 账 号 注 册</strong></h2>
+        <h5><strong>REGISTER NEW ACCOUNT</strong></h5>
+      </div>
+      <div class="container login-cont">
+        <div class="row">
+          <div
+            class="col-10 col-sm-6 col-md-4 col-lg-4 offset-1 offset-sm-3 offset-md-4 offset-lg-4 login-col"
+          >
+            <i class="icon ion-lock-combination"></i>
+            <form class="login-form">
+              <div class="form-group">
+                <input
+                  class="form-control form-control-lg lg-frc name"
+                  type="text"
+                  required=""
+                  placeholder="请输入您的名字"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  class="form-control form-control-lg lg-frc passwd"
+                  type="password"
+                  required=""
+                  placeholder="请输入您的密码"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  class="form-control form-control-lg lg-frc repasswd"
+                  type="password"
+                  required=""
+                  placeholder="请再次输入您的密码"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  class="form-control form-control-lg lg-frc gender"
+                  type="text"
+                  required=""
+                  placeholder="请输入您的性别"
+                  autocomplete="off"
+                  pattern="(male|female)"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  class="form-control form-control-lg lg-frc age"
+                  type="number"
+                  required=""
+                  placeholder="请输入您的年龄"
+                  autocomplete="off"
+                  min="1"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  class="form-control form-control-lg lg-frc old"
+                  type="text"
+                  required=""
+                  placeholder="请输入您的数据用途说明"
+                  autocomplete="off"
+                />
+              </div>
+              <div class="form-group">
+                <button class="btn btn-light btn-lg login-btn" type="submit">
+                  <strong>Register</strong>
+                </button>
+              </div>
+            </form>
+          </div>
         </div>
-        <div class="container login-cont">
-            <div class="row">
-                <div class="col-10 col-sm-6 col-md-4 col-lg-4 offset-1 offset-sm-3 offset-md-4 offset-lg-4 login-col"><i class="icon ion-lock-combination"></i>
-                    <form class="login-form" >
-                        <div class="form-group"><input class="form-control form-control-lg lg-frc name" type="text" required="" placeholder="请输入您的名字" autocomplete="off"></div>
-                        <div class="form-group"><input class="form-control form-control-lg lg-frc passwd" type="password" required="" placeholder="请输入您的密码" autocomplete="off"></div>
-                        <div class="form-group"><input class="form-control form-control-lg lg-frc repasswd" type="password" required="" placeholder="请再次输入您的密码" autocomplete="off"></div>
-                        <div class="form-group"><input class="form-control form-control-lg lg-frc gender" type="text" required="" placeholder="请输入您的性别" autocomplete="off" pattern="(male|female)"></div>
-                        <div class="form-group"><input class="form-control form-control-lg lg-frc age" type="number" required="" placeholder="请输入您的年龄" autocomplete="off" min="1"></div>
-                        <div class="form-group"><input class="form-control form-control-lg lg-frc old" type="text" required="" placeholder="请输入您的数据用途说明" autocomplete="off"></div>
-                        <div class="form-group"><button class="btn btn-light btn-lg login-btn" type="submit"><strong>Register</strong></button></div>
-                    </form>
-                </div>
-            </div>
-        </div>
+      </div>
     </section>
     <script src="assets/js/jquery.min.js"></script>
     <script src="assets/bootstrap/js/bootstrap.min.js"></script>
-</body>
+  </body>
 
-<script>
-    // 获取患者用户的当前最大用户编号
-    function get_patient_max_no()
-    {
-        var pat_no 
-        $.ajax({
-            type: 'post',
-            url:"http://127.0.0.1:8000/user/api/",
-            async: false,
-            data:{
-                action: "search_Patient",
-                no_op: '3'
-            },
-            datatype:'json',
-            success:function(res){
-                if(res['retlist'].length == 0)
-                    pat_no = '3000001';
-                else
-                    pat_no = res['retlist'].slice(-1)[0]['no_id']
-            },
-            error: function(){
-                alert("服务器暂无连接")
-            }
-        })
-        return pat_no
+  <script>
+    // 获取访客用户的当前最大用户编号
+    function get_patient_max_no() {
+      var pat_no;
+      $.ajax({
+        type: "post",
+        url: "http://127.0.0.1:8000/user/api/",
+        async: false,
+        data: {
+          action: "search_Visitor",
+          no_op: "3",
+        },
+        datatype: "json",
+        success: function (res) {
+          if (res["retlist"].length == 0) pat_no = "3000001";
+          else pat_no = res["retlist"].slice(-1)[0]["no_id"];
+        },
+        error: function () {
+          alert("服务器暂无连接");
+        },
+      });
+      return pat_no;
     }
 
-    function add_pre_zero(no, num)
-    {
-        var standard = '0000000000'
-        return standard.slice(0, no-num.length) + num
+    function add_pre_zero(no, num) {
+      var standard = "0000000000";
+      return standard.slice(0, no - num.length) + num;
     }
 
     // 生成本次注册所需的用户编号
-    function generate_new_pat_no(pre_no)
-    {
-        var last = pre_no.slice(4,)
-        if(parseInt(last) < 999){
-            return pre_no.slice(0, 4) + add_pre_zero(3, parseInt(last)+1)
+    function generate_new_pat_no(pre_no) {
+      var last = pre_no.slice(4);
+      if (parseInt(last) < 999) {
+        return pre_no.slice(0, 4) + add_pre_zero(3, parseInt(last) + 1);
+      } else {
+        var middle = pre_no.slice(1, 4);
+        if (parseInt(middle) < 999) {
+          return "3" + add_pre_zero(3, parseInt(middle) + 1) + "000";
+        } else {
+          alert("工作人员数据已满");
         }
-        else{
-            var middle = pre_no.slice(1, 4)
-            if(parseInt(middle) < 999){
-                return "3" + add_pre_zero(3, parseInt(middle) + 1) + "000"
-            }
-            else{
-                alert("医生数据已满")
-            }
-        }
+      }
     }
 
+    $(".login-btn").click(function () {
+      var no = generate_new_pat_no(get_patient_max_no().toString());
+      var name = $(".name").val();
+      var passwd = $(".passwd").val();
+      var repasswd = $(".repasswd").val();
+      var gender = $(".gender").val();
+      var age = $(".age").val();
+      var old = $(".old").val();
 
-    $('.login-btn').click(function(){
-        
-        var no = generate_new_pat_no(get_patient_max_no().toString())
-        var name = $(".name").val()
-        var passwd = $(".passwd").val()
-        var repasswd = $('.repasswd').val()
-        var gender = $(".gender").val()
-        var age = $('.age').val()
-        var old = $(".old").val()
+      alert(no + " " + name + " " + passwd + " " + repasswd + " ");
 
-        alert(no + " " + name + " " + passwd + " "+ repasswd + " ")
+      if (
+        name == "" ||
+        passwd == "" ||
+        repasswd == "" ||
+        gender == "" ||
+        age == "" ||
+        old == ""
+      ) {
+        alert("有信息还未填充完整，无法注册，请稍后重试");
+        return;
+      } else if (passwd != repasswd) {
+        alert("两次输入的密码不同，请重试");
+        $(".passwd").val("");
+        $(".repasswd").val("");
+        return;
+      } else if (gender != "male" && gender != "female") {
+        alert("性别请输入男(male) 女(female)");
+        return;
+      } else if (parseInt(age) <= 0) {
+        alert("年龄有误，请重试");
+        return;
+      }
 
-        if(name == "" || passwd == "" || repasswd == "" || gender == "" || age == '' || old == ''){
-            alert("有信息还未填充完整，无法注册，请稍后重试")
-            return
-        }
-        else if(passwd != repasswd){
-            alert("两次输入的密码不同，请重试")
-            $(".passwd").val("")
-            $(".repasswd").val("")
-            return
-        }
-        else if(gender != 'male' && gender != 'female'){
-            alert("性别请输入男(male) 女(female)")
-            return
-        }
-        else if(parseInt(age) <= 0){
-            alert("年龄有误，请重试")
-            return
-        }
+      // 首先插入IdentityInfo
+      $.ajax({
+        type: "post",
+        url: "http://127.0.0.1:8000/user/api/",
+        async: false,
+        data: {
+          action: "add_IdentityInfo",
+          no: no,
+          password: passwd,
+          belong: "P",
+          no_op: no,
+        },
+        datatype: "json",
+        success: function (res) {
+          if (res["ret"] != 1) {
+            alert("服务器暂无连接");
+            return;
+          }
+        },
+        error: function () {
+          alert("服务器暂无连接");
+          return;
+        },
+      });
 
-        // 首先插入IdentityInfo
-        $.ajax({
-            type: 'post',
-            url:"http://127.0.0.1:8000/user/api/",
-            async: false,
-            data:{
-                action: "add_IdentityInfo",
-                no: no,
-                password: passwd,
-                belong: 'P',
-                no_op: no
-            },
-            datatype:'json',
-            success:function(res){
-                if(res['ret'] != 1){
-                    alert("服务器暂无连接")
-                    return
-                }
-            },
-            error: function(){
-                alert("服务器暂无连接")
-                return
-            }
-        })
-
-        // 然后插入患者中
-        $.ajax({
-            type: 'post',
-            url:"http://127.0.0.1:8000/user/api/",
-            async: false,
-            data:{
-                action: "add_Patient",
-                no: no,
-                name: name,
-                v_age: age,
-                v_gender: gender,
-                v_aim: old,
-                no_op: no
-            },
-            datatype:'json',
-            success:function(res){
-                if(res['ret'] != 1){
-                    alert("服务器暂无连接")
-                    return
-                }
-                else{
-                    alert("注册成功 您的登录账号是" + no)
-                }
-            },
-            error: function(){
-                alert("服务器暂无连接")
-            }
-        })
-    })
-
-</script>
-
+      // 然后插入访客中
+      $.ajax({
+        type: "post",
+        url: "http://127.0.0.1:8000/user/api/",
+        async: false,
+        data: {
+          action: "add_Visitor",
+          no: no,
+          name: name,
+          v_age: age,
+          v_gender: gender,
+          v_aim: old,
+          no_op: no,
+        },
+        datatype: "json",
+        success: function (res) {
+          if (res["ret"] != 1) {
+            alert("服务器暂无连接");
+            return;
+          } else {
+            alert("注册成功 您的登录账号是" + no);
+          }
+        },
+        error: function () {
+          alert("服务器暂无连接");
+        },
+      });
+    });
+  </script>
 </html>

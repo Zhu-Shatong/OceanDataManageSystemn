@@ -90,7 +90,7 @@
 </body>
 
 <script>
-    // 获取当前医生账号信息 
+    // 获取当前工作人员账号信息 
     var doc_no = parseInt(url_parser(window.location.search))
 
     // 获取今天的日期 返回字符串
@@ -180,10 +180,10 @@
         return res_no
     }
 
-    // 更新某个医生的综合评分
+    // 更新某个工作人员的综合评分
     function update_doc_index()
     {
-        var score_list = []     //当前医生的所有评分列表
+        var score_list = []     //当前工作人员的所有评分列表
         $.ajax({
             type: 'post',
             url:"http://127.0.0.1:8000/user/api/",
@@ -212,19 +212,19 @@
             }
         })
 
-        var update_index = 0  // 计算医生当前综合评分
+        var update_index = 0  // 计算工作人员当前综合评分
         for(var i in score_list){
             update_index += score_list[i]
         }
         update_index = update_index == 0 ? 10 : update_index / score_list.length
 
-        // 更新医生的综合得分
+        // 更新工作人员的综合得分
         $.ajax({
             type: 'post',
             url:"http://127.0.0.1:8000/user/api/",
             async: true,
             data:{
-                action: "update_Doctor",
+                action: "update_Staff",
                 no: doc_no,
                 s_index: update_index,
                 no_op: doc_no
@@ -240,7 +240,7 @@
         })
     }
 
-    // 为该医生插入新评分  -- 同步方式 
+    // 为该工作人员插入新评分  -- 同步方式 
     function add_score(score)
     {
         var cur_no = get_cur_fno()
@@ -268,7 +268,7 @@
         })
     }
 
-    // 为该医生插入新意见 -- 同步方式
+    // 为该工作人员插入新意见 -- 同步方式
     function add_comment(comment)
     {
         var cur_no = get_cur_cc_no()
@@ -297,13 +297,13 @@
     }
 
 
-    // 初始化某个医生的名字
+    // 初始化某个工作人员的名字
     $.ajax({
         type: 'post',
         url:"http://127.0.0.1:8000/user/api/",
         async: true,
         data:{
-            action: "search_Doctor",
+            action: "search_Staff",
             no: doc_no,
             no_op: '3'
         },
@@ -311,7 +311,7 @@
     }).then(function(res){
         if(res['ret'] == 1){
             res_list = res['retlist'][0]
-            $(".doc_name").text("您所评价的医生为：" + res_list['name'])
+            $(".doc_name").text("您所评价的工作人员为：" + res_list['name'])
         }
         else{
             alert("服务器暂无连接")

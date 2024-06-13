@@ -1,109 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
-    
-</body>
-<script src="jquery.js"></script>
-<script>
+  </head>
+  <body></body>
+  <script src="jquery.js"></script>
+  <script>
     //对1号进行权限添加
-    var doctor_list = ['search_IdentityInfo', 'search_Doctor', 'update_Doctor', 'search_Medicine', 'search_Score', 'search_Comment', 'search_Current_Register',
-                       'add_Current_Register', 'update_Current_Register', 'search_Register', 'add_Prescription', 'search_Patient']
+    var doctor_list = [
+      "search_IdentityInfo",
+      "search_Staff",
+      "update_Staff",
+      "search_Dataset",
+      "search_Score",
+      "search_Comment",
+      "search_Current_Apply",
+      "add_Current_Apply",
+      "update_Current_Apply",
+      "search_Apply",
+      "add_Prescription",
+      "search_Visitor",
+    ];
 
-    function add_doc_perm(index)
-    {
-        $.ajax({
-            type: 'post',
-            url:"http://127.0.0.1:8000/user/api/",
-            async: false,
-            data:{
-                action: "add_Permission",
-                p_index: parseInt(index)+1,
-                p_no: 1,
-                p_depict: doctor_list[parseInt(index)]
-            },
-            datatype:'json',
-            success: function(res){
-                if(res['ret'] != 1){
-                    alert("服务器暂时无连接")
-                }
-            }
-        })
+    function add_doc_perm(index) {
+      $.ajax({
+        type: "post",
+        url: "http://127.0.0.1:8000/user/api/",
+        async: false,
+        data: {
+          action: "add_Permission",
+          p_index: parseInt(index) + 1,
+          p_no: 1,
+          p_depict: doctor_list[parseInt(index)],
+        },
+        datatype: "json",
+        success: function (res) {
+          if (res["ret"] != 1) {
+            alert("服务器暂时无连接");
+          }
+        },
+      });
     }
-
-    
-
 
     // 对2号进行权限添加
-    var query_list = ['search_IdentityInfo', 'search_QueryAssist', 'update_QueryAssist', 'search_Communication', 'add_Communication', 'del_Communication']
-    function add_query_perm(index)
-    {
-        $.ajax({
-            type: 'post',
-            url:"http://127.0.0.1:8000/user/api/",
-            async: false,
-            data:{
-                action: "add_Permission",
-                p_index: parseInt(index)+1,
-                p_no: 2,
-                p_depict: query_list[parseInt(index) - doctor_list.length]
-            },
-            datatype:'json',
-            success: function(res){
-                if(res['ret'] != 1){
-                    alert("服务器暂时无连接")
-                }
-            }
-        })
+    var query_list = [
+      "search_IdentityInfo",
+      "search_QueryAssist",
+      "update_QueryAssist",
+      "search_Communication",
+      "add_Communication",
+      "del_Communication",
+    ];
+    function add_query_perm(index) {
+      $.ajax({
+        type: "post",
+        url: "http://127.0.0.1:8000/user/api/",
+        async: false,
+        data: {
+          action: "add_Permission",
+          p_index: parseInt(index) + 1,
+          p_no: 2,
+          p_depict: query_list[parseInt(index) - doctor_list.length],
+        },
+        datatype: "json",
+        success: function (res) {
+          if (res["ret"] != 1) {
+            alert("服务器暂时无连接");
+          }
+        },
+      });
     }
-
-    
 
     // 对3号进行权限添加
-    var pat_list = ['search_IdentityInfo', 'add_IdentityInfo', 'search_Medicine', 'search_Score', 'add_Score', 'search_Comment', 'add_Comment',
-                    'search_Current_Register', 'search_Register', 'add_Register', 'search_Communication', 'add_Communication', 'del_Communication',
-                    'search_Prescription', 'search_QueryAssist', 'search_Patient', 'add_Patient', 'update_Patient', 'search_Doctor']
-    function add_pat_perm(index)
-    {
-        $.ajax({
-            type: 'post',
-            url:"http://127.0.0.1:8000/user/api/",
-            async: false,
-            data:{
-                action: "add_Permission",
-                p_index: parseInt(index)+1,
-                p_no: 3,
-                p_depict: pat_list[parseInt(index) - doctor_list.length - query_list.length]
-            },
-            datatype:'json',
-            success: function(res){
-                if(res['ret'] != 1){
-                    alert("服务器暂时无连接")
-                }
-            }
-        })
+    var pat_list = [
+      "search_IdentityInfo",
+      "add_IdentityInfo",
+      "search_Dataset",
+      "search_Score",
+      "add_Score",
+      "search_Comment",
+      "add_Comment",
+      "search_Current_Apply",
+      "search_Apply",
+      "add_Apply",
+      "search_Communication",
+      "add_Communication",
+      "del_Communication",
+      "search_Authorization",
+      "search_QueryAssist",
+      "search_Visitor",
+      "add_Visitor",
+      "update_Visitor",
+      "search_Staff",
+    ];
+    function add_pat_perm(index) {
+      $.ajax({
+        type: "post",
+        url: "http://127.0.0.1:8000/user/api/",
+        async: false,
+        data: {
+          action: "add_Permission",
+          p_index: parseInt(index) + 1,
+          p_no: 3,
+          p_depict:
+            pat_list[parseInt(index) - doctor_list.length - query_list.length],
+        },
+        datatype: "json",
+        success: function (res) {
+          if (res["ret"] != 1) {
+            alert("服务器暂时无连接");
+          }
+        },
+      });
     }
 
-
-    function add_perm()
-    {
-        for(var i in doctor_list){
-            add_doc_perm(i)
-        }
-        for(var i = doctor_list.length; i - doctor_list.length < query_list.length; i++){
-            add_query_perm(i)
-        }
-        for(var i = doctor_list.length + query_list.length; i - doctor_list.length - query_list.length < pat_list.length; i++){
-            add_pat_perm(i)
-        }
+    function add_perm() {
+      for (var i in doctor_list) {
+        add_doc_perm(i);
+      }
+      for (
+        var i = doctor_list.length;
+        i - doctor_list.length < query_list.length;
+        i++
+      ) {
+        add_query_perm(i);
+      }
+      for (
+        var i = doctor_list.length + query_list.length;
+        i - doctor_list.length - query_list.length < pat_list.length;
+        i++
+      ) {
+        add_pat_perm(i);
+      }
     }
 
-    add_perm()
-
-</script>
+    add_perm();
+  </script>
 </html>
