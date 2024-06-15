@@ -83,9 +83,9 @@ def dispatcher(request):
 
 
 '''
-    对挂号时每个工作人员的锁表进行管理
+    对申请时每个工作人员的锁表进行管理
     doc_no: 申请锁的工作人员账号
-    pat_np: 挂号访客账号
+    pat_np: 申请访客账号
     op: 操作类型（读或写） 分别为1 2
     type: 加锁或者释放锁 1 加锁 2 释放锁
     锁分为两种形式：共享锁和排他锁————  共享锁为读锁  排他锁为写锁
@@ -328,17 +328,17 @@ def update_Visitor(request):
     info = request.params
     update_no = info['no']
     try:
-        _patient = Visitor.objects.get(no_id=update_no)
+        _visitor = Visitor.objects.get(no_id=update_no)
         if 'name' in info:
-            _patient.name = info['name']
+            _visitor.name = info['name']
         if 'v_age' in info:
-            _patient.v_age = info['v_age']
+            _visitor.v_age = info['v_age']
         if 'v_gender' in info:
-            _patient.v_gender = info['v_gender']
+            _visitor.v_gender = info['v_gender']
         if 'v_aim' in info:
-            _patient.v_aim = info['v_aim']
+            _visitor.v_aim = info['v_aim']
         # !!! 不能忘记save
-        _patient.save()
+        _visitor.save()
         change_log('update_Visitor ' + info['no'] + ' ' +
                    info['name'] + ' ' + info['v_age'] + ' ' + info['v_gender'])
         return JsonResponse({'ret': 1})
@@ -384,21 +384,21 @@ def update_Staff(request):
     info = request.params
     doc_no = info['no']
     try:
-        _doctor = Staff.objects.get(no_id=doc_no)
+        _staff = Staff.objects.get(no_id=doc_no)
         if 'name' in info:
-            _doctor.name = info['name']
+            _staff.name = info['name']
         if 's_profession' in info:
-            _doctor.s_profession = info['s_profession']
+            _staff.s_profession = info['s_profession']
         if 's_depart' in info:
-            _doctor.s_depart = info['s_depart']
+            _staff.s_depart = info['s_depart']
         if 's_index' in info:
-            _doctor.s_index = info['s_index']
+            _staff.s_index = info['s_index']
         if 's_time_begin' in info:
-            _doctor.s_time_begin = info['s_time_begin']
+            _staff.s_time_begin = info['s_time_begin']
         if 's_time_end' in info:
-            _doctor.s_time_end = info['s_time_end']
+            _staff.s_time_end = info['s_time_end']
         # !!! 不能忘记save
-        _doctor.save()
+        _staff.save()
         if 's_index' in info:
             change_log('update_Staff ' + info['no'] + ' ' + info['s_index'])
         else:
@@ -523,9 +523,9 @@ def search_Current_Apply(request):
     if not Permission_detect(no_op, 'search_Current_Apply'):
         return JsonResponse({'ret': 0})
     qs = Current_Apply.objects.values()
-    _rnodoctor = request.params.get('a_no_staff', None)
-    if _rnodoctor:
-        qs = qs.filter(a_no_staff=_rnodoctor)
+    _rnostaff = request.params.get('a_no_staff', None)
+    if _rnostaff:
+        qs = qs.filter(a_no_staff=_rnostaff)
     _rdate = request.params.get('a_date', None)
     if _rdate:
         qs = qs.filter(a_date=_rdate)
@@ -568,10 +568,10 @@ def update_Current_Apply(request):
     if not Permission_detect(no_op, 'update_Current_Apply'):
         return JsonResponse({'ret': 0})
     info = request.params
-    _doctor = info['a_no_staff']
+    _staff = info['a_no_staff']
     try:
         current_reg = Current_Apply.objects.get(
-            a_no_staff_id=_doctor, a_date=info['a_date'])
+            a_no_staff_id=_staff, a_date=info['a_date'])
         if 'a_index' in info:
             current_reg.a_index = info['a_index']
         # !!! 不能忘记save
@@ -580,11 +580,11 @@ def update_Current_Apply(request):
                    info['a_no_staff'] + ' ' + info['a_date'] + ' ' + info['a_index'])
         return JsonResponse({'ret': 1})
     except:
-        return JsonResponse({'ret': 0, 'msg': f'no为{_doctor}的工作人员不存在'})
+        return JsonResponse({'ret': 0, 'msg': f'no为{_staff}的工作人员不存在'})
 
 
 '''
-    查询当前挂号信息 访客根据自身编号 挂号工作人员编号 以及挂号日期 查询挂号号码
+    查询当前申请信息 访客根据自身编号 申请工作人员编号 以及申请日期 查询申请号码
     action: search_Apply
     data: 筛选信息
 '''
@@ -596,27 +596,27 @@ def search_Apply(request):
     if not Permission_detect(no_op, 'search_Apply'):
         return JsonResponse({'ret': 0})
     _rdate = request.params.get('a_date', None)
-    _rdoctor = request.params.get('a_no_staff', None)
-    _rpatient = request.params.get('a_no_visitor', None)
+    _rstaff = request.params.get('a_no_staff', None)
+    _rvisitor = request.params.get('a_no_visitor', None)
     _rindex = request.params.get('a_index', None)
-    ''' 为挂号加读锁 '''
-    Lock_Manage(_rdoctor, no_op, 1, 1)
+    ''' 为申请加读锁 '''
+    Lock_Manage(_rstaff, no_op, 1, 1)
     qs = Apply.objects.values()
     ''' 解锁 '''
-    Lock_Manage(_rdoctor, no_op, 1, 2)
+    Lock_Manage(_rstaff, no_op, 1, 2)
     if _rdate:
         qs = qs.filter(a_date=_rdate)
-    if _rdoctor:
-        qs = qs.filter(a_no_staff_id=_rdoctor)
-    if _rpatient:
-        qs = qs.filter(a_no_visitor_id=_rpatient)
+    if _rstaff:
+        qs = qs.filter(a_no_staff_id=_rstaff)
+    if _rvisitor:
+        qs = qs.filter(a_no_visitor_id=_rvisitor)
     if _rindex:
         qs = qs.filter(a_index=_rindex)
     return JsonResponse({'ret': 1, 'retlist': list(qs)})
 
 
 '''
-    新增挂号信息 根据当天日期 工作人员编号 访客编号 新增挂号号码
+    新增申请信息 根据当天日期 工作人员编号 访客编号 新增申请号码
     action: add_Apply
     data: 新增
     !!! 多对多关系插入方式不同
@@ -630,7 +630,7 @@ def add_Apply(request):
         return JsonResponse({'ret': 0})
     info = request.params
     try:
-        ''' 为挂号加写锁 '''
+        ''' 为申请加写锁 '''
         Lock_Manage(info['a_no_staff'], info['a_no_visitor'], 2, 1)
         Apply.objects.create(a_index=info['a_index'], a_date=info['a_date'],
                              a_no_staff_id=info['a_no_staff'], a_no_visitor_id=info['a_no_visitor'])
@@ -719,7 +719,7 @@ def del_Communication(request):
 
 
 '''
-    根据挂号日期，挂号号码，访客编号 查询药物数量和药物信息
+    根据申请日期，申请号码，访客编号 查询药物数量和药物信息
     action: search_Authorization
     data: 筛选信息
 '''

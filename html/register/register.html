@@ -49,46 +49,46 @@
         <h1 id="animatedTextHeading">Click To<br>Apply</h1>
         <section class="features-blue">
             <div class="container">
-                <div class="intro doctor_info">
+                <div class="intro staff_info">
                     <h2 class="text-center" data-bss-hover-animate="shake">工作人员信息</h2>
                 </div>
                 <div class="row features">
-                    <div class="col-sm-6 col-md-4 item __doc0" data-bss-hover-animate="jello" no_id=""><img class="img_doctor" no="0" src="./assets/img/p2.png">
+                    <div class="col-sm-6 col-md-4 item __doc0" data-bss-hover-animate="jello" no_id=""><img class="img_staff" no="0" src="./assets/img/p2.png">
                         <h3 class="name __docname0">专 家 姓 名</h3>
                         <p class="description __doctime0">时间：</p>
                         <p class="description __docprof0">职位：</p>
                         <p class="description __docmaxreg0">当前队列长度：</p>
                         <p class="description __doccurreg0">当前办理进度：</p><a class="btn btn-light action-button __docbtn" no="0" role="button">Apply Now</a>
                     </div>
-                    <div class="col-sm-6 col-md-4 item __doc1" data-bss-hover-animate="jello" no_id=""><img class="img_doctor" no="1" src="./assets/img/p2.png">
+                    <div class="col-sm-6 col-md-4 item __doc1" data-bss-hover-animate="jello" no_id=""><img class="img_staff" no="1" src="./assets/img/p2.png">
                         <h3 class="name __docname1">专 家 姓 名</h3>
                         <p class="description __doctime1">时间：</p>
                         <p class="description __docprof1">职位：</p>
                         <p class="description __docmaxreg1">当前队列长度：</p>
                         <p class="description __doccurreg1">当前办理进度：</p><a class="btn btn-light action-button __docbtn" no="1" role="button">Apply Now</a>
                     </div>
-                    <div class="col-sm-6 col-md-4 item __doc2" data-bss-hover-animate="jello" no_id=""><img class="img_doctor" no="2" src="./assets/img/p2.png">
+                    <div class="col-sm-6 col-md-4 item __doc2" data-bss-hover-animate="jello" no_id=""><img class="img_staff" no="2" src="./assets/img/p2.png">
                         <h3 class="name __docname2">专 家 姓 名</h3>
                         <p class="description __doctime2">时间：</p>
                         <p class="description __docprof2">职位：</p>
                         <p class="description __docmaxreg2">当前队列长度：</p>
                         <p class="description __doccurreg2">当前办理进度：</p><a class="btn btn-light action-button __docbtn" no="2" role="button">Apply Now</a>
                     </div>
-                    <div class="col-sm-6 col-md-4 item __doc3" data-bss-hover-animate="jello" no_id=""><img class="img_doctor" no="3" src="./assets/img/p2.png">
+                    <div class="col-sm-6 col-md-4 item __doc3" data-bss-hover-animate="jello" no_id=""><img class="img_staff" no="3" src="./assets/img/p2.png">
                         <h3 class="name __docname3">专 家 姓 名</h3>
                         <p class="description __doctime3">时间：</p>
                         <p class="description __docprof3">职位：</p>
                         <p class="description __docmaxreg3">当前队列长度：</p>
                         <p class="description __doccurreg3">当前办理进度：</p><a class="btn btn-light action-button __docbtn" no="3" role="button">Apply Now</a>
                     </div>
-                    <div class="col-sm-6 col-md-4 item __doc4" data-bss-hover-animate="jello" no_id=""><img class="img_doctor" no="4" src="./assets/img/p2.png">
+                    <div class="col-sm-6 col-md-4 item __doc4" data-bss-hover-animate="jello" no_id=""><img class="img_staff" no="4" src="./assets/img/p2.png">
                         <h3 class="name __docname4">专 家 姓 名</h3>
                         <p class="description __doctime4">时间：</p>
                         <p class="description __docprof4">职位：</p>
                         <p class="description __docmaxreg4">当前队列长度：</p>
                         <p class="description __doccurreg4">当前办理进度：</p><a class="btn btn-light action-button __docbtn" no="4" role="button">Apply Now</a>
                     </div>
-                    <div class="col-sm-6 col-md-4 item __doc5" data-bss-hover-animate="jello" no_id=""><img class="img_doctor" no="5" src="./assets/img/p2.png">
+                    <div class="col-sm-6 col-md-4 item __doc5" data-bss-hover-animate="jello" no_id=""><img class="img_staff" no="5" src="./assets/img/p2.png">
                         <h3 class="name __docname5">专 家 姓 名</h3>
                         <p class="description __doctime5">时间：</p>
                         <p class="description __docprof5">职位：</p>
@@ -121,7 +121,7 @@
     }
 
     //根据传入的科室的字符串返回相关工作人员信息
-    function obtain_doctor(depart)
+    function obtain_staff(depart)
     {
         var res_list
         $.ajax({
@@ -170,8 +170,8 @@
         return date + " " + hour + ":" + minu + ":" + sec
     }
 
-    //获取某个工作人员的当前最大挂号号码 
-    function get_certain_doctor_max_register(doc_no)
+    //获取某个工作人员的当前最大申请号码 
+    function get_certain_staff_max_register(doc_no)
     {
         var max_register_cnt = 0
         $.ajax({
@@ -199,7 +199,7 @@
     }
 
     //获取某个工作人员的当前到号号码
-    function get_certain_doctor_cur_register(doc_no)
+    function get_certain_staff_cur_register(doc_no)
     {
         var cur_register
         $.ajax({
@@ -228,7 +228,7 @@
 
     //获取某个工作人员的姓名 职称 就诊开始时间 就诊结束时间
     //doc_info [姓名，职称, 就诊开始时间，就诊结束时间]
-    function get_certain_doctor_info(doc_no)
+    function get_certain_staff_info(doc_no)
     {
         var doc_info = []
         $.ajax({
@@ -273,13 +273,13 @@
             var doc_no = doc_list[i + 6 * page_cnt]['no_id']
             
             // 获取姓名 职称 就诊时间 
-            var doc_info = get_certain_doctor_info(doc_no)
+            var doc_info = get_certain_staff_info(doc_no)
 
-            // 获取工作人员当前挂号最大数
-            var doc_max_reg_cnt = get_certain_doctor_max_register(doc_no) - 1
+            // 获取工作人员当前申请最大数
+            var doc_max_reg_cnt = get_certain_staff_max_register(doc_no) - 1
 
             // 获取工作人员当前到号号码
-            var doc_cur_reg_cnt = get_certain_doctor_cur_register(doc_no)
+            var doc_cur_reg_cnt = get_certain_staff_cur_register(doc_no)
 
             // 更新该框内的工作人员账号信息
             $(".__doc" + i).attr("no_id", doc_no)
@@ -293,8 +293,8 @@
             // 更新就诊时间
             $(".__doctime" + i).text("时间: " + doc_info[2] + ":00-" + doc_info[3] + ":00")
 
-            // 更新当前挂号数
-            $(".__docmaxreg" + i).text("当前挂号数: " + doc_max_reg_cnt)
+            // 更新当前申请数
+            $(".__docmaxreg" + i).text("当前申请数: " + doc_max_reg_cnt)
 
             // 更新当前到号数
             $(".__doccurreg" + i).text("当前到号数: " + doc_cur_reg_cnt)
@@ -304,7 +304,7 @@
     // 初始化关闭所有提示框
     Init();
 
-    //点击animatedTextBackground 弹出挂号选项导航栏
+    //点击animatedTextBackground 弹出申请选项导航栏
     $('#animatedTextBackground').click(function(){
         $(".navbar.navbar-light.navbar-expand-md.navbar-fixed-top.navigation-clean-button").fadeIn(1500)
     })
@@ -316,14 +316,14 @@
         if(page_cnt > 0){
             // 更新
             page_cnt = page_cnt - 1
-            doc_list = obtain_doctor(cur_depart_info)
+            doc_list = obtain_staff(cur_depart_info)
             update_page(doc_list)
         }
     })
 
     // 下一页按钮按下 .btn.btn-primary.btn-sm.float-right.tenant-continue-btn.continue1
     $(".btn.btn-primary.btn-sm.float-right.tenant-continue-btn.continue1").click(function(){
-        var doc_list = obtain_doctor(cur_depart_info)
+        var doc_list = obtain_staff(cur_depart_info)
         if((page_cnt + 1) * 6 < doc_list.length){
             page_cnt = page_cnt + 1
             update_page(doc_list)
@@ -347,12 +347,12 @@
         var index = $(this).attr('no')
         page_cnt = 0
         cur_depart_info = depart_name[index]
-        doc_list = obtain_doctor(cur_depart_info)
+        doc_list = obtain_staff(cur_depart_info)
         update_page(doc_list)
         $(".features-blue").fadeIn(1500)
     })
 
-    // __docbtn按下进行挂号
+    // __docbtn按下进行申请
     $(".__docbtn").click(function(){
         var index = $(this).attr('no')
 
@@ -360,11 +360,11 @@
         var doc_no = $(".__doc" + index).attr("no_id")
 
         if(doc_no == ""){
-            alert("该工作人员不存在，无法挂号，请重试")
+            alert("该工作人员不存在，无法申请，请重试")
             return
         }
         else{
-            var doc_max_reg_cnt = get_certain_doctor_max_register(doc_no)
+            var doc_max_reg_cnt = get_certain_staff_max_register(doc_no)
             $.ajax({
                 type: 'post',
                 url:"http://127.0.0.1:8000/user/api/",
@@ -380,11 +380,11 @@
                 datatype:'json',
             }).then(function(res){
                 if(res['ret'] == 1){
-                    alert("挂号成功，可在个人设置中查看当前到号信息")
-                    window.location.assign(url_generate('../patient/patient.html', [user_no]))
+                    alert("申请成功，可在个人设置中查看当前到号信息")
+                    window.location.assign(url_generate('../visitor/visitor.html', [user_no]))
                 }
                 else
-                    alert("挂号失败，请稍后重试")
+                    alert("申请失败，请稍后重试")
             }).catch(function(){
                 alert("服务器暂无连接")
             })
@@ -392,15 +392,15 @@
     })
 
     // 按下某个工作人员的信息框进入详细页面以供了解
-    $(".img_doctor").click(function(){
+    $(".img_staff").click(function(){
         // 获取工作人员的no
         var doc_no = $(".__doc" + $(this).attr("no")).attr("no_id")
         if(doc_no != ""){
-            window.open(url_generate('../doctor_info/doctor_info.html', [doc_no]))
+            window.open(url_generate('../staff_info/staff_info.html', [doc_no]))
         }
     })
     
-    $(".img_doctor").hover(function(){
+    $(".img_staff").hover(function(){
         $(this).css("cursor", "pointer")
     })
 

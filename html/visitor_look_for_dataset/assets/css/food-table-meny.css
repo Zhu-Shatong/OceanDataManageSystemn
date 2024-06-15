@@ -1,0 +1,118 @@
+.menu-item {
+  color: rgb(0,0,0);
+  padding: 10px 30px;
+  margin: 6px 0;
+  background-color: #ffffff;
+}
+
+.menu-item .price {
+  font-weight: 700;
+  float: right;
+}
+
+.mitt {
+  font-size: 11px;
+}
+
+.table thead th {
+  border: none;
+}
+
+.rubrik-span {
+  font-size: 15px;
+}
+
+.border {
+  border: 0px solid #dee2e6!important;
+}
+
+.row.row-size {
+  width: 80%;
+  height: 60%;
+  position: relative;
+  left: 10%;
+}
+
+.dataset-img {
+  width: 80px;
+  height: 70px;
+  border: solid 1px lightblue;
+  border-radius: 90px;
+}
+
+.btn.btn-primary.btn-sm.float-right.tenant-continue-btn.next_btn {
+  position: absolute;
+  top: 18%;
+  right: 32%;
+}
+
+.btn.btn-primary.btn-sm.float-right.tenant-continue-btn:hover {
+  cursor: pointer;
+}
+
+.btn.btn-primary.btn-sm.float-right.tenant-continue-btn.previous_btn {
+  position: absolute;
+  top: 18%;
+  right: 65%;
+  padding: 7px;
+}
+
+.info {
+  float: right;
+  color: rgb(255,10,0);
+  font-size: 20px;
+  list-style-type: none;
+}
+
+.menu-item:hover {
+  box-shadow: 0px 0px 8px 8px lightblue;
+}
+
+.dataset-name {
+  font-size: 30px;
+}
+
+.depict {
+  color: rgb(128,128,128);
+  font-size: 18px;
+  position: absolute;
+  top: 12%;
+  left: 4%;
+}
+
+.depict.two {
+  top: 21.5%;
+}
+
+.depict.three {
+  top: 31%;
+}
+
+.depict.four {
+  top: 40.5%;
+}
+
+.depict.five {
+  top: 50%;
+}
+
+.depict.six {
+  top: 59.5%;
+}
+
+.depict.seven {
+  top: 69%;
+}
+
+.depict.eight {
+  top: 78.5%;
+}
+
+.depict.nine {
+  top: 88%;
+}
+
+.depict.ten {
+  top: 98%;
+}
+

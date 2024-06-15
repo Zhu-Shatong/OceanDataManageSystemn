@@ -10,7 +10,7 @@
   <script src="jquery.js"></script>
   <script>
     //对1号进行权限添加
-    var doctor_list = [
+    var staff_list = [
       "search_IdentityInfo",
       "search_Staff",
       "update_Staff",
@@ -34,7 +34,7 @@
           action: "add_Permission",
           p_index: parseInt(index) + 1,
           p_no: 1,
-          p_depict: doctor_list[parseInt(index)],
+          p_depict: staff_list[parseInt(index)],
         },
         datatype: "json",
         success: function (res) {
@@ -63,7 +63,7 @@
           action: "add_Permission",
           p_index: parseInt(index) + 1,
           p_no: 2,
-          p_depict: query_list[parseInt(index) - doctor_list.length],
+          p_depict: query_list[parseInt(index) - staff_list.length],
         },
         datatype: "json",
         success: function (res) {
@@ -106,7 +106,7 @@
           p_index: parseInt(index) + 1,
           p_no: 3,
           p_depict:
-            pat_list[parseInt(index) - doctor_list.length - query_list.length],
+            pat_list[parseInt(index) - staff_list.length - query_list.length],
         },
         datatype: "json",
         success: function (res) {
@@ -118,19 +118,19 @@
     }
 
     function add_perm() {
-      for (var i in doctor_list) {
+      for (var i in staff_list) {
         add_doc_perm(i);
       }
       for (
-        var i = doctor_list.length;
-        i - doctor_list.length < query_list.length;
+        var i = staff_list.length;
+        i - staff_list.length < query_list.length;
         i++
       ) {
         add_query_perm(i);
       }
       for (
-        var i = doctor_list.length + query_list.length;
-        i - doctor_list.length - query_list.length < pat_list.length;
+        var i = staff_list.length + query_list.length;
+        i - staff_list.length - query_list.length < pat_list.length;
         i++
       ) {
         add_pat_perm(i);

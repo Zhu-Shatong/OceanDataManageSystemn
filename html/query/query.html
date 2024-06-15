@@ -203,7 +203,7 @@
                 if(res['ret'] == 1){
                     alert("正在为您寻找相应访客，请稍等")
                     accept_query = 1
-                    find_patient()
+                    find_visitor()
                 }
                 else{
                     alert("服务器暂无连接")
@@ -223,7 +223,7 @@
     }
 
     // 匹配访客进行咨询
-    async function find_patient()
+    async function find_visitor()
     {
         while(accept_query == 1){
             $.ajax({

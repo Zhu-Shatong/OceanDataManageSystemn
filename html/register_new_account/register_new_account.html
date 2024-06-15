@@ -105,7 +105,7 @@
 
   <script>
     // 获取访客用户的当前最大用户编号
-    function get_patient_max_no() {
+    function get_visitor_max_no() {
       var pat_no;
       $.ajax({
         type: "post",
@@ -148,7 +148,7 @@
     }
 
     $(".login-btn").click(function () {
-      var no = generate_new_pat_no(get_patient_max_no().toString());
+      var no = generate_new_pat_no(get_visitor_max_no().toString());
       var name = $(".name").val();
       var passwd = $(".passwd").val();
       var repasswd = $(".repasswd").val();

@@ -220,9 +220,9 @@ class Authorization(models.Model):
     Au_num = models.IntegerField()
     # 访客编号
     Au_no = models.ManyToManyField(Visitor)
-    # 挂号号码
+    # 申请号码
     Au_index = models.IntegerField(db_index=True)
-    # 挂号日期
+    # 申请日期
     Au_date = models.DateField(db_index=True)
 
 

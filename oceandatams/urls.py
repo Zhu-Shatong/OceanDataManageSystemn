@@ -15,11 +15,13 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
-from .views import *
+from common import views
 
-''' 子路由表 '''
+''' 主路由表 '''
 urlpatterns = [
-    path('api/', dispatcher),
+    path('admin/', admin.site.urls),  # admin路由，这里是django自带的
+    path('user/', include('common.urls')),  # 用户模块，包括登录、注册、找回密码等，common是app的名字
+    path('', views.home, name='home'),  # 根路径路由
 ]
 
 '''
