@@ -59,7 +59,7 @@
             text-shadow: 1px 0px 2px rgba(52, 58, 64, 0.99);
           "
         >
-          处方药物开具
+          数据集访问权限授权
         </h1>
         <hr style="width: 100px; border: 3px solid var(--light)" />
       </div>
@@ -95,7 +95,7 @@
                         class="menu-item"
                         style="background: rgba(255, 255, 255, 0)"
                       >
-                        请在下方输入对应药物名字进行搜索，点击Prescribe按钮确定
+                        请在下方输入对应数据集名字进行搜索，点击Authorization按钮确定
                       </td>
                     </tr>
                     <tr>
@@ -120,14 +120,14 @@
                             <input type="text" required class="dataset_name" />
                             <span class="highlight"></span>
                             <span class="bar"></span>
-                            <label>请输入药物名字</label>
+                            <label>请输入数据集名字</label>
                           </div>
 
                           <div class="group">
                             <input type="text" required class="dataset_num" />
                             <span class="highlight"></span>
                             <span class="bar"></span>
-                            <label>请输入药物数量</label>
+                            <label>请输入数据集授权天数</label>
                           </div>
                         </div>
                         <button
@@ -135,7 +135,7 @@
                           data-bss-hover-animate="pulse"
                           type="button"
                         >
-                          Prescribe<i class="fas fa-plus-circle edit-icon"></i>
+                          Authorization<i class="fas fa-plus-circle edit-icon"></i>
                         </button>
                       </td>
                     </tr>
@@ -144,7 +144,7 @@
                         class="menu-item"
                         style="background: rgba(255, 255, 255, 0)"
                       >
-                        以下为获取的药物结果
+                        以下为获取的数据集结果
                         <div></div>
                         <div class="col phram-info">
                           <table
@@ -163,7 +163,7 @@
                               </tr>
                             </thead>
                             <tbody class="dataset_table">
-                              <tr class="hover-shape" name="药物名字">
+                              <tr class="hover-shape" name="数据集名字">
                                 <td class="tmp">名字</td>
                                 <td class="tmp">类型</td>
                                 <td class="tmp">内容</td>
@@ -339,7 +339,7 @@
 
     Init();
 
-    // 获取药物数据
+    // 获取数据集数据
     function search_Dataset(filter_str) {
       var dataset_list;
       $.ajax({
@@ -376,7 +376,7 @@
       }
     }
 
-    // 将药物列表转换为表格
+    // 将数据集列表转换为表格
     function dataset_list_generate(dataset_list) {
       var update_html = "";
       $(".dataset_table").html(update_html); // 首先清空html
@@ -415,13 +415,13 @@
     med = search_Dataset("");
     dataset_list_generate(med);
 
-    // 点击药物 在药物名字中直接输入   // 使用dom操作防止jquery对动态生成元素失效
+    // 点击数据集 在数据集名字中直接输入   // 使用dom操作防止jquery对动态生成元素失效
     $(document).on("click", ".hover-shape", function () {
       var name = $(this).attr("name");
       $(".dataset_name").val(name);
     });
 
-    // 点击 对药物进行搜索.search_icon
+    // 点击 对数据集进行搜索.search_icon
     $(".search_icon").click(function () {
       var filter_str = $(".search_input").val();
       var dataset_list = search_Dataset(filter_str);
@@ -459,7 +459,7 @@
         datatype: "json",
         success: function (res) {
           if (res["ret"] == 1) {
-            alert("添加药物信息成功");
+            alert("添加数据集信息成功");
           } else {
             alert("服务器暂无连接");
           }

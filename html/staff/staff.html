@@ -297,7 +297,7 @@
         </div>
       </div>
       <div class="footer-copyright">
-        <p>© 2021 Copyright 1853557 ZH_hhhh</p>
+        <p>© 2024 Copyright 2151131 Shatong Zhu</p>
       </div>
     </footer>
     <script src="assets/js/jquery.min.js"></script>
@@ -449,7 +449,7 @@
       return max_register_cnt;
     }
 
-    // 获取工作人员当前叫号号码
+    // 获取工作人员当前进度号码
     function get_certain_staff_cur_register() {
       var cur_register;
       $.ajax({
@@ -477,18 +477,18 @@
 
     // 点击更新到号信息
     $(".dropdown-item2").click(function () {
-      alert("test");
+
       var max_reg_cnt = get_certain_staff_max_register();
       var cur_reg_cnt = get_certain_staff_cur_register();
-      alert("当前最大申请号码为:" + max_reg_cnt + " 当前叫号为:" + cur_reg_cnt);
+      alert("当前最大申请号码为:" + max_reg_cnt + " 当前进度为:" + cur_reg_cnt);
       if (max_reg_cnt == 0) {
         alert("您当前暂无申请信息，请稍后重试");
         return;
       } else if (max_reg_cnt == cur_reg_cnt) {
-        alert("您当前申请已全部治疗完毕，请稍后重试");
+        alert("您当前申请已全部审理完毕，请稍后重试");
         return;
       } else if (cur_reg_cnt < max_reg_cnt) {
-        alert("test");
+
         cur_reg_cnt += 1;
         if (cur_reg_cnt == 1) {
           $.ajax({
@@ -504,7 +504,7 @@
             },
             datatype: "json",
             success: function (res) {
-              if (res["ret"] == 1) alert("更新当前叫号为:" + cur_reg_cnt);
+              if (res["ret"] == 1) alert("更新当前进度为:" + cur_reg_cnt);
               else alert("服务器暂无连接");
             },
             error: function () {
@@ -525,7 +525,7 @@
             },
             datatype: "json",
             success: function (res) {
-              if (res["ret"] == 1) alert("更新当前叫号为:" + cur_reg_cnt);
+              if (res["ret"] == 1) alert("更新当前进度为:" + cur_reg_cnt);
               else alert("服务器暂无连接");
             },
             error: function () {
@@ -536,12 +536,12 @@
       }
     });
 
-    // 点击Prescribe Now 若当前到号为0 则无法开处方
+    // 点击Authorization Now 若当前到号为0 则无法开处方
     $(".authorization").click(function () {
       var cur_reg = get_certain_staff_cur_register();
       if (cur_reg == 0) {
         alert(
-          "您当前叫号为0，还无法开具处方信息 请您先在个人设置中更新叫号信息"
+          "您当前进度为0，还无法开具处方信息 请您先在个人设置中更新进度信息"
         );
         return;
       } else {

@@ -410,7 +410,7 @@ def update_Staff(request):
 
 
 '''
-    根据输入的药物名称，返回药物信息
+    根据输入的数据集名称，返回数据集信息
     action: search_Dataset
     data: 所要筛选的信息
 '''
@@ -533,7 +533,7 @@ def search_Current_Apply(request):
 
 
 '''
-    新增当前叫号信息 主要用于初始化操作
+    新增当前进度信息 主要用于初始化操作
     action: add_Current_Apply
     data: 新增信息
 '''
@@ -556,7 +556,7 @@ def add_Current_Apply(request):
 
 
 '''
-    根据工作人员编号 更新当前叫号
+    根据工作人员编号 更新当前进度
     action: update_Current_Apply
     data: 更新信息
 '''
@@ -719,7 +719,7 @@ def del_Communication(request):
 
 
 '''
-    根据申请日期，申请号码，访客编号 查询药物数量和药物信息
+    根据申请日期，申请号码，访客编号 查询数据集授权天数和数据集信息
     action: search_Authorization
     data: 筛选信息
 '''

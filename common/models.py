@@ -109,7 +109,7 @@ class Dataset(models.Model):
     # 名称 主键
     d_name = models.CharField(max_length=20, primary_key=True, db_index=True)
     # 描述
-    d_presc = models.CharField(max_length=100)
+    d_presc = models.CharField(max_length=500)
 
 
 '''
@@ -213,10 +213,10 @@ class Communication(models.Model):
 
 
 class Authorization(models.Model):
-    # 药物名称
+    # 数据集名称
     d_name = models.ForeignKey(
         Dataset, on_delete=models.CASCADE, db_index=True)
-    # 药物数量
+    # 数据集授权天数
     Au_num = models.IntegerField()
     # 访客编号
     Au_no = models.ManyToManyField(Visitor)
