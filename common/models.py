@@ -73,7 +73,7 @@ class Visitor(models.Model):
     v_age = models.IntegerField()
     # 访客性别 'male' 'female'
     v_gender = models.CharField(max_length=6)
-    # 访客病史
+    # 访客目的
     v_aim = models.CharField(max_length=100)
 
 

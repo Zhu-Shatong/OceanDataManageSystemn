@@ -9,7 +9,7 @@ no,depict
 1,add_Current_Apply
 1,update_Current_Apply
 1,search_Apply
-1,add_Prescription
+1,add_Authorization
 1,search_Visitor
 2,search_IdentityInfo
 2,search_QueryAssist

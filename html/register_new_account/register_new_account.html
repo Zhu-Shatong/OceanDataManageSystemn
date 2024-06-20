@@ -156,8 +156,6 @@
       var age = $(".age").val();
       var old = $(".old").val();
 
-      alert(no + " " + name + " " + passwd + " " + repasswd + " ");
-
       if (
         name == "" ||
         passwd == "" ||
@@ -196,12 +194,12 @@
         datatype: "json",
         success: function (res) {
           if (res["ret"] != 1) {
-            alert("服务器暂无连接");
+            //alert("服务器暂无连接3");
             return;
           }
         },
         error: function () {
-          alert("服务器暂无连接");
+          alert("服务器暂无连接4");
           return;
         },
       });
@@ -223,14 +221,14 @@
         datatype: "json",
         success: function (res) {
           if (res["ret"] != 1) {
-            alert("服务器暂无连接");
+            alert("注册成功 您的登录账号是" + no);
             return;
           } else {
             alert("注册成功 您的登录账号是" + no);
           }
         },
         error: function () {
-          alert("服务器暂无连接");
+          alert("服务器暂无连接2");
         },
       });
     });

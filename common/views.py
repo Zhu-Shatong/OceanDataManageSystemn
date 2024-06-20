@@ -74,8 +74,8 @@ def dispatcher(request):
         return del_Communication(request)
     elif action == "search_Authorization":
         return search_Authorization(request)
-    elif action == "add_Prescription":
-        return add_Prescription(request)
+    elif action == "add_Authorization":
+        return add_Authorization(request)
     elif action == "write_log":
         return write_log(request)
     else:
@@ -745,15 +745,15 @@ def search_Authorization(request):
 
 '''
     增加新的处方信息
-    action: add_Prescription
+    action: add_Authorization
     data: 新的处方信息
 '''
 
 
-def add_Prescription(request):
+def add_Authorization(request):
     # 添加权限判断操作
     no_op = request.params.get('no_op', None)
-    if not Permission_detect(no_op, 'add_Prescription'):
+    if not Permission_detect(no_op, 'add_Authorization'):
         return JsonResponse({'ret': 0})
     info = request.params
     _prno = Visitor.objects.get(no_id=info['Au_no'])
@@ -761,7 +761,7 @@ def add_Prescription(request):
                                        Au_date=info['Au_date'], d_name_id=info['d_name'])
     try:
         reg.Au_no.add(_prno)
-        change_log('add_Prescription ' + info['Au_no'] + ' ' + info['Au_index'] + ' ' +
+        change_log('add_Authorization ' + info['Au_no'] + ' ' + info['Au_index'] + ' ' +
                    info['d_name'] + ' ' + info['Au_num'])
         return JsonResponse({'ret': 1})
     except:
